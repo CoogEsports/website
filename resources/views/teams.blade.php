@@ -23,5 +23,43 @@
 <body class="antialiased bg-layer-800">
     @include('layouts.nav-menu', ['position' => 'fixed'])
     <x-hero title="Teams" tagline="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quis odio vestibulum nunc, neque integer purus." />
+
+    <div class="relative isolate overflow-hidden pt-24 sm:pt-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="flex justify-items-center items-center justify-between ">
+                <h1 class="text-white font-bold display-6 text-5xl tracking-wider uppercase font-chakra">Valorant</h1>
+                <x-primary-button>Apply for Tryouts</x-primary-button>
+            </div>
+            <div class="py-20">
+                <!-- Blog Posts List -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/300" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">Premiere</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative isolate overflow-hidden py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="flex justify-items-center items-center justify-between ">
+                <h1 class="text-white font-bold display-6 text-5xl tracking-wider uppercase font-chakra">Counter-Strike 2</h1>
+                <x-primary-button>Apply for Tryouts</x-primary-button>
+            </div>
+            <div class="py-20">
+                <!-- Blog Posts List -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/300" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">Premiere</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

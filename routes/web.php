@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ConnectedAccountProviderController;
+use App\Http\Controllers\Acp\AcpController;
 use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +50,7 @@ Route::prefix('provider')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware('auth')->group(function () {
+    Route::get('/acp', [AcpController::class, 'index'])->name('acp.index');
+});

@@ -19,15 +19,15 @@
 
         <!-- Email Address -->
         <div>
-            <x-text-input id="email" class="block mt-2 w-full" type="email" name="email" placeholder="{{ __('Enter your email') }}" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-2 w-full" type="email" name="email" placeholder="{{ __('Email') }}" :value="old('email')" required autofocus autocomplete="username" />
         </div>
 
         <!-- Password -->
         <div>
-            <x-text-input id="password" class="block mt-2 w-full" type="password" name="password" placeholder="{{ __('Enter your password') }}" required autocomplete="current-password" />
+            <x-text-input id="password" class="block mt-2 w-full" type="password" name="password" placeholder="{{ __('Password, do you remember it?') }}" required autocomplete="current-password" />
         </div>
 
-        <!--<div class="flex items-center justify-between">
+        <div class="flex items-center justify-between">
             <div class="flex items-center">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="rounded-0 border-layer-500 text-primary focus:ring-offset-0 p-2 focus:ring-2 focus:ring-primary focus:ring-offset-primary " name="remember" style="background-color: hsla(0, 0%, 100%, 0.03);">
@@ -39,7 +39,7 @@
                 <a href="{{ route('password.request') }}" class="text-primary underline text-lg">{{ __('Forgot your password?') }}</a>
             </div>
             @endif
-        </div>-->
+        </div>
 
         <x-primary-button class="w-full" size="lg">
             {{ __('Log in') }}

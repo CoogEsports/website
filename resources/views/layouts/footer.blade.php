@@ -10,13 +10,16 @@
                     <div>
                         <h2 style="margin-bottom: 23px; color: #f32c46; font-size:20px; line-height: 1.1em; letter-spacing: 0.1em;font-family: 'Chakra Petch', sans-serif;font-weight:700;text-transform: uppercase">Pages</h2>
                     </div>
+                    <div>
+                        <h2 style="margin-bottom: 23px; color: #f32c46; font-size:20px; line-height: 1.1em; letter-spacing: 0.1em;font-family: 'Chakra Petch', sans-serif;font-weight:700;text-transform: uppercase">Follow us</h2>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="mx-auto max-w-7xl text-white text-xl">
         <div class="pt-8 text-center" style="border-top: 1.5px solid rgba(255, 255, 255, 0.1);">
-            Copyright © 2023 Coog Esports. All rights reserved. All trademarks, logos and brand names are the property of their respective owners. All company, product and service names used in this website are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement.
+            Copyright © 2024 Coog Esports. All rights reserved. All trademarks, logos and brand names are the property of their respective owners. All company, product and service names used in this website are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement.
         </div>
     </div>
 </footer>

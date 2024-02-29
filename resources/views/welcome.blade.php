@@ -20,13 +20,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased">
-    @include('layouts.nav-menu', ['position' => 'fixed'])
+<body class="antialiased bg-black">
+    @include('layouts.nav-menu')
     <div class="relative isolate overflow-hidden" style="background-image: url(https://assets.website-files.com/60358955e12a8a2413b99edc/6035aa3bd811e11ae79d2a4d_bg-home-hero-esports-template.jpg)">
-        <div class="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:px-8 lg:py-40">
-            <div class="mx-auto max-w-3xl lg:mx-0 lg:pt-8" style="margin-bottom:207px;">
-                <h1 class="text-white font-bold display-6 text-7xl mb-2 tracking-wider uppercase font-chakra">Premier Gaming and Collegiate Esports Team</h1>
-                <p class="text-white text-2xl mb-10">Houston's top Esports program representing the <br>University of Houston and the greater Houston area.</p>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 lg:py-10">
+            <div class="mx-auto max-w-3xl lg:mx-0 lg:pt-20" style="margin-bottom:207px;">
+                <h1 class="text-white font-bold display-6 text-5xl mb-2 tracking-wider uppercase font-chakra">University of Houston</h1>
+                <h1 class="text-white font-bold display-6 text-7xl mb-2 tracking-wider uppercase font-chakra">eSports & Gaming</h1>
+                <p class="text-white text-2xl mb-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quis odio vestibulum nunc, neque integer purus.</p>
                 <x-primary-button>Buy Merch</x-primary-button>
             </div>
             <div class="pt-12 flex justify-items-center items-center justify-between" style="border-top: 1.5px solid rgba(255, 191, 207, 0.17);">
@@ -40,22 +41,59 @@
             </div>
         </div>
     </div>
+
+    <!-- Teams -->
+    <div class="relative isolate overflow-hidden py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="flex justify-items-center items-center justify-between ">
+                <h1 class="text-white font-bold display-6 text-5xl tracking-wider uppercase font-chakra">Teams</h1>
+                <x-primary-button>Browse teams</x-primary-button>
+            </div>
+            <div class="py-20">
+                <!-- Blog Posts List -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/300" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">Valorant</h3>
+                    </div>
+
+                    <!-- Blog Post 2 -->
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/301" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">Counter-Strike 2</h3>
+                    </div>
+
+                    <!-- Blog Post 3 -->
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/303" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">League of Legends</h3>
+                    </div>
+
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/304" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">Overwatch 2</h3>
+                    </div>
+
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/305" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">Apex Legends</h3>
+                    </div>
+
+                    <div class="mb-4">
+                        <img src="https://placekitten.com/400/307" alt="Blog Post Image" class="w-full h-48 object-cover mb-2">
+                        <h3 class="text-2xl font-bold text-white tracking-wider uppercase font-chakra">Rocket League</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Merch -->
+
+    <!-- Teams -->
+
+    @include('layouts.footer')
 </body>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const header = document.querySelector("header");
-
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 1) {
-            header.classList.remove("bg-transparent");
-            header.classList.add("bg-black");
-        } else {
-            header.classList.remove("bg-black");
-            header.classList.add("bg-transparent");
-        }
-    });
-});    
-</script>
 
 </html>

@@ -1,5 +1,5 @@
-<header class="{{ $position }} z-50 w-full py-9 bg-transparent">
-    <div class="flex items-center justify-between max-w-7xl px-4 py-3 mx-auto sm:px-6 md:space-x-10">
+<header class="z-50 w-full py-9 bg-transparent fixed">
+    <div class="flex items-center justify-between max-w-7xl px-4 mx-auto sm:px-6 md:space-x-10">
         <div div class="flex flex-shrink-0 items-center">
             <a href="/"><!--<x-application-logo />--></a>
         </div>
@@ -7,7 +7,6 @@
             <a href="/"><span class="font-bold text-gray-100 px-3 uppercase tracking-widest hover:text-esports transition-all" style="font-family: 'Chakra Petch', sans-serif;">Home</span></a>
             <a href="{{ route('about') }}"><span class="font-bold text-gray-100 px-3 uppercase tracking-widest hover:text-esports transition-all" style="font-family: 'Chakra Petch', sans-serif;">About</span></a>
             <a href="{{ route('teams') }}"><span class="font-bold text-gray-100 px-3 uppercase tracking-widest hover:text-esports transition-all" style="font-family: 'Chakra Petch', sans-serif;">Teams</span></a>
-            <a href="/"><span class="font-bold text-gray-100 px-3 uppercase tracking-widest hover:text-esports transition-all" style="font-family: 'Chakra Petch', sans-serif;">Partners</span></a>
             @auth
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">

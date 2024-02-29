@@ -2,7 +2,7 @@
 
     <div class="text-center">
         <h1 class="text-white font-bold display-6 text-5xl mb-4 tracking-wider uppercase font-chakra">Register</h1>
-        <p class="text-layer-200 text-xl mb-10 max-w-md mx-auto">Please make sure your name matches with your student name and payment method name.</p>
+        <p class="text-layer-200 text-xl mb-10 max-w-md mx-auto">Sign up for an account to manage your club membership and participation in eSports.</p>
     </div>
 
     @if($errors->any())
@@ -53,6 +53,19 @@
                 <option value="XXL">XX-Large</option>
             </x-select-input>
         </div>
+
+        <!-- Gender -->
+        <div>
+            <x-input-label for="gender" :value="__('Gender')" />
+
+            <x-select-input id="gender" class="block mt-3 w-full" name="gender" :value="old('gender')" required>
+                <option selected="" value="">Select a gender</option>
+                <option value="XS">Male</option>
+                <option value="S">Female</option>
+                <option value="M">Non-binary</option>
+                <option value="M">Prefer not to say</option>
+            </x-select-input>
+        </div>        
 
         <!-- Password -->
         <div>

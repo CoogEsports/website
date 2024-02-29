@@ -16,15 +16,4 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans text-gray-900 bg-layer-800 antialiased">
-    @include('layouts.nav-menu')
-    <div class="flex flex-col sm:justify-center items-center lg:p-24">
-
-        <div class="w-full sm:max-w-xl px-6 py-16 lg:px-12 overflow-hidden bg-layer-700 border border-layer-300">
-            {{ $slot }}
-        </div>
-    </div>
-    @include('layouts.footer')
-</body>
-
 </html>
