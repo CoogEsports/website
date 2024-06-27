@@ -46,7 +46,7 @@
       <a href="#about" class="text-white uppercase px-4 py-2">
         Teams
       </a>
-      <a href="#services" class="text-white uppercase px-4 py-2">
+      <a href="/events" class="text-white uppercase px-4 py-2">
         Events
       </a>
       <a href="#contact" class="text-white uppercase px-4 py-2">
