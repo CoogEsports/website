@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-7xl mx-auto py-8 flex justify-between items-center">
     <div class="flex space-x-6">
-      <!-- Left side navigation icons -->
+      <!-- nav icons -->
       <a href="#home" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fab', 'x-twitter']" />
       </a>
@@ -38,6 +38,7 @@
 
   </div>
 
+  <!-- changed the href to "/events" from previous "#events" didn't work unless i did so -->
   <div class="max-w-7xl mx-auto mb-10">
     <div class="flex justify-center space-x-6">
       <a href="#home" class="text-white uppercase px-4 py-2 border border-primary">

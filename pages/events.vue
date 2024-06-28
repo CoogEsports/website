@@ -1,10 +1,11 @@
 <template>
     <div>
-      <h1 class="text-center text-2xl font-bold my-4">Events</h1>
+      <h1 class="text-center text-2xl text-white font-bold my-4 ">Events</h1>
       <Calendar />
     </div>
   </template>
   
+  <!-- importing component calendar -->
   <script>
   import Calendar from '~/components/Calendar.vue'
   
@@ -16,6 +17,6 @@
   </script>
   
   <style scoped>
-  /* Add any specific styles for your events page here */
+  /* add specific styling for events page here */
   </style>
   

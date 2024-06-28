@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-gray-1000 text-white py-8">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <!-- Left Section: Social Media Links -->
+      <!-- social media links -->
       <div class="flex flex-col items-start space-y-2">
         <div class="text-lg font-semibold">LET'S CONNECT</div>
         <div class="flex space-x-4">
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <!-- Center Section: Sponsors -->
+      <!-- sponsors. REPLACE LOGOS WHEN SPONSORED -->
       <div class="text-center">
         <div class="text-lg font-semibold">SPONSORED BY</div>
         <div class="flex space-x-6 justify-center mt-2">
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <!-- Right Section: Contact Info -->
+      <!-- contact info. could be pulled from DB maybe -->
       <div class="text-right">
         <div class="font-semibold text-lg">University of Houston Esports Club</div>
         <div>4465 University Dr. MAILBOX 50</div>
@@ -48,5 +48,5 @@ export default {
 </script>
 
 <style scoped>
-/* Add any specific styles for your footer here */
+/* add specific styling */
 </style>
