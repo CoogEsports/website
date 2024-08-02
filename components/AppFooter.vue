@@ -5,25 +5,25 @@
       <div class="flex flex-col items-start space-y-2">
         <div class="text-lg font-semibold">LET'S CONNECT</div>
         <div class="flex space-x-4">
-          <a href="#" class="text-2xl text-red-600">
+          <a href="https://twitter.com/CoogEsports" target="_blank" rel="noopener noreferrer" class="text-2xl text-red-600">
             <font-awesome-icon :icon="['fab', 'x-twitter']" />
           </a>
-          <a href="#" class="text-2xl text-red-600">
+          <a href="https://www.instagram.com/CoogEsports" target="_blank" rel="noopener noreferrer" class="text-2xl text-red-600">
             <font-awesome-icon :icon="['fab', 'instagram']" />
           </a>
-          <a href="#" class="text-2xl text-red-600">
+          <a href="https://discord.com/invite/coog-gaming-154441500950921216" target="_blank" rel="noopener noreferrer" class="text-2xl text-red-600">
             <font-awesome-icon :icon="['fab', 'discord']" />
           </a>
-          <a href="#" class="text-2xl text-red-600">
+          <a href="https://www.twitch.tv/coogesports" target="_blank" rel="noopener noreferrer" class="text-2xl text-red-600">
             <font-awesome-icon :icon="['fab', 'twitch']" />
           </a>
         </div>
       </div>
 
       <!-- sponsors. REPLACE LOGOS WHEN SPONSORED -->
-      <div class="text-center">
+      <div class="text-center flex flex-col items-center" style="padding-left: 150px;">
         <div class="text-lg font-semibold">SPONSORED BY</div>
-        <div class="flex space-x-6 justify-center mt-2">
+        <div class="flex space-x-6 mt-2">
           <img src="/assets/img/your_logo_here.jpg" alt="Logo0" class="h-20">
           <img src="/assets/img/your_logo_here.jpg" alt="Logo1" class="h-20">
           <img src="/assets/img/your_logo_here.jpg" alt="Logo2" class="h-20">
@@ -48,5 +48,5 @@ export default {
 </script>
 
 <style scoped>
-/* add specific styling */
+/* additional specific styling can be added here */
 </style>
