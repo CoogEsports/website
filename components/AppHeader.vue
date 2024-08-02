@@ -30,15 +30,12 @@
       <a href="#about" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fas', 'rss']" />
       </a>
-      <a href="#about" class="text-2xl text-secondary">
+      <nuxt-link to="/login" class="text-2xl text-secondary"> <!-- Correct link to login page -->
         <font-awesome-icon :icon="['fas', 'user']" />
-      </a>
+      </nuxt-link>
     </div>
-
-
   </div>
 
-  <!-- changed the href to "/events" from previous "#events" didn't work unless i did so -->
   <div class="max-w-7xl mx-auto mb-10">
     <div class="flex justify-center space-x-6">
       <a href="#home" class="text-white uppercase px-4 py-2 border border-primary">
@@ -61,6 +58,14 @@
       </a>
     </div>
   </div>
-
-
 </template>
+
+<script>
+export default {
+  // Your component logic here
+}
+</script>
+
+<style scoped>
+/* Your styles here */
+</style>
