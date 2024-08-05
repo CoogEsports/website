@@ -47,6 +47,3 @@ export default {
 }
 </script>
 
-<style scoped>
-/* add specific styling */
-</style>

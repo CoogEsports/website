@@ -38,29 +38,35 @@
 
   </div>
 
-  <!-- changed the href to "/events" from previous "#events" didn't work unless i did so -->
+  <!-- changed to NuxtLink to use exact-active-class to move border to appropriate page -->
   <div class="max-w-7xl mx-auto mb-10">
     <div class="flex justify-center space-x-6">
-      <a href="#home" class="text-white uppercase px-4 py-2 border border-primary">
+      <NuxtLink to="/" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Home
-      </a>
-      <a href="#about" class="text-white uppercase px-4 py-2">
+      </NuxtLink>
+      <NuxtLink to="/teams" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Teams
-      </a>
-      <a href="/events" class="text-white uppercase px-4 py-2">
+      </NuxtLink>
+      <NuxtLink to="/events" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Events
-      </a>
-      <a href="#contact" class="text-white uppercase px-4 py-2">
+      </NuxtLink>
+      <NuxtLink to="/media" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Media
-      </a>
-      <a href="#contact" class="text-white uppercase px-4 py-2">
-        Merch
-      </a>
-      <a href="#contact" class="text-white uppercase px-4 py-2">
+      </NuxtLink>
+      <NuxtLink to="/matches" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
+        MATCHES
+      </NuxtLink>
+      <NuxtLink to="/contact" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Contact
-      </a>
+      </NuxtLink>
     </div>
   </div>
 
 
 </template>
+
+<style scoped>
+.nuxt-link-exact-active {
+  border: 1px solid var(--primary-color); /* Adjust this to your actual primary color variable or value */
+}
+</style>

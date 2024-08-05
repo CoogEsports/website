@@ -6,7 +6,7 @@ created: 06/27/2024 author of todo: brandon
 2. functionality- will have to query database and display all events on proper dates. don't forget -->
 
 <template>
-  <div class="flex justify-center items-center min-h-fit bg-gray-300">
+  <div class="flex justify-center items-center min-h-fit bg-lighter-base">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-screen-lg">
       <div class="flex justify-between items-center mb-4">
         <button @click="prevMonth">

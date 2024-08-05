@@ -15,8 +15,3 @@
     }
   }
   </script>
-  
-  <style scoped>
-  /* add specific styling for events page here */
-  </style>
-  
