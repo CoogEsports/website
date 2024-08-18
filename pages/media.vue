@@ -2,6 +2,7 @@
     <div class="min-h-screen bg-lighter-base text-white font-sans">
       <div class="container mx-auto py-8">
         <h1 class="text-3xl font-bold mb-6">MEDIA WALL</h1>
+        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
         
         <!-- media tags. currently by years -->
         <div class="flex gap-2 mb-4">
@@ -29,81 +30,75 @@
   </div>
   </template>
   
-  <script>
-  // replace with actual media from db. add upload feature for social media admin view
+  <script setup>
+  import { ref, computed, watch, onMounted } from 'vue';
   import testImg from '@/assets/img/test_img.jpg';
-
-
-  export default {
-    data() {
-    return {
-      //initializing.
-      years: ['2023 - 2024', '2024 - 2025', '2025 - 2026', '2026 - 2027'],
-      selectedYear: '2024 - 2025',
-      mediaItems: [],
-      currentPage: 1,
-      itemsPerPage: 9,
-      totalPages: 1,
-    };
-  },
-  computed: {
-    paginatedMedia() {
-      const start = (this.currentPage - 1) * this.itemsPerPage;
-      const end = this.currentPage * this.itemsPerPage;
-      return this.mediaItems.slice(start, end);
-    },
-  },
-  watch: {
-    selectedYear() {
-      this.fetchMediaItems();
-    },
-    currentPage() {
-      this.fetchMediaItems();
-    },
-  },
-  methods: {
-    fetchMediaItems() {
-      // to be replaced with api request 
-      const allMediaItems = [
+  import testImg2 from '@/assets/img/test_img2.jpg';
+  import testImg3 from '@/assets/img/test_img3.jpg';
+  
+  // Reactive state
+  const years = ref(['2023 - 2024', '2024 - 2025', '2025 - 2026', '2026 - 2027']);
+  const selectedYear = ref('2024 - 2025');
+  const mediaItems = ref([]);
+  const currentPage = ref(1);
+  const itemsPerPage = 9;
+  const totalPages = computed(() => Math.ceil(mediaItems.value.length / itemsPerPage));
+  
+  // Computed property for paginated media
+  const paginatedMedia = computed(() => {
+    const start = (currentPage.value - 1) * itemsPerPage;
+    const end = currentPage.value * itemsPerPage;
+    return mediaItems.value.slice(start, end);
+  });
+  
+  // Watchers
+  watch(selectedYear, fetchMediaItems);
+  watch(currentPage, fetchMediaItems);
+  
+  // Fetch media items (replace with actual API request)
+  function fetchMediaItems() {
+    const allMediaItems = [
         { year: '2023 - 2024', image: testImg },
 
         // 19 img. testing pagination. 19/9 rounded up pages -> 3 pages
         { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg },
         { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg },
         { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg },
-        { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg },
-        { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg },
-        { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg }, { year: '2024 - 2025', image: testImg },
-        { year: '2024 - 2025', image: testImg },
+        { year: '2024 - 2025', image: testImg2 }, { year: '2024 - 2025', image: testImg2 }, { year: '2024 - 2025', image: testImg2 },
+        { year: '2024 - 2025', image: testImg2 }, { year: '2024 - 2025', image: testImg2 }, { year: '2024 - 2025', image: testImg2 },
+        { year: '2024 - 2025', image: testImg2 }, { year: '2024 - 2025', image: testImg2 }, { year: '2024 - 2025', image: testImg2 },
+        { year: '2024 - 2025', image: testImg3 },
  
-        { year: '2025 - 2026', image: testImg },
-        { year: '2026 - 2027', image: testImg },
+        { year: '2025 - 2026', image: testImg2 },
+        { year: '2026 - 2027', image: testImg3 },
       ];
-
-      // gather media from selected filter and determine pagination length
-      // need to grey out prev and next buttons for filters with only 1 paage
-      this.mediaItems = allMediaItems.filter(media => media.year === this.selectedYear);
-      this.totalPages = Math.ceil(this.mediaItems.length / this.itemsPerPage);
-    },
-    //set default year to current and beginning fo pagination
-    setYear(year) {
-      this.selectedYear = year;
-      this.currentPage = 1;
-    },
-    nextPage() {
-      if (this.currentPage < this.totalPages) {
-        this.currentPage++;
-      }
-    },
-    previousPage() {
-      if (this.currentPage > 1) {
-        this.currentPage--;
-      }
-    },
-  },
-  mounted() {
-    this.fetchMediaItems();
-  },
-};
-</script>
+  
+    // Gather media from selected filter and determine pagination length
+    mediaItems.value = allMediaItems.filter(media => media.year === selectedYear.value);
+  }
+  
+  // Set default year and reset pagination
+  function setYear(year) {
+    selectedYear.value = year;
+    currentPage.value = 1;
+  }
+  
+  // Pagination methods
+  function nextPage() {
+    if (currentPage.value < totalPages.value) {
+      currentPage.value++;
+    }
+  }
+  
+  function previousPage() {
+    if (currentPage.value > 1) {
+      currentPage.value--;
+    }
+  }
+  
+  // Lifecycle hook
+  onMounted(() => {
+    fetchMediaItems();
+  });
+  </script>
   

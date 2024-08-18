@@ -19,6 +19,15 @@ export default {
         'secondary': '#f0333d',
         'lighter-base': '#1b1b1b',     
       },
+      backgroundImage: {
+        'val-bg': "url('/assets/img/val_bg_gray.png')",
+        'ow2-bg': "url('/assets/img/ow2_bg_gray.png')",
+        'os-bg': "url('/assets/img/os_bg_gray_2.png')",
+        'cs2-bg': "url('/assets/img/cs2_bg_gray.png')",
+        'lol-bg': "url('/assets/img/lol_bg_gray.png')",
+        'rl-bg': "url('/assets/img/rl_bg_gray.png')",
+        'ssbu-bg': "url('/assets/img/ssbu_bg_gray.png')",
+      }
     },
   },
   plugins: [],

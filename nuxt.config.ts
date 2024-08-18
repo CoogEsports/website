@@ -17,11 +17,11 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/eslint', "@nuxt/image"],
+  modules: ['@nuxt/eslint'],
 
   build: {
     transpile: [
       "@fortawesome/vue-fontawesome"
     ]
-  }
+  },
 });

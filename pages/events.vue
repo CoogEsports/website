@@ -1,17 +1,14 @@
 <template>
-    <div>
-      <h1 class="text-center text-2xl text-white font-bold my-4 ">Events</h1>
+  <div class="min-h-screen bg-lighter-base text-white font-sans">
+    <div class="container mx-auto py-8">
+      <h1 class="text-3xl font-bold mb-6">EVENTS</h1>
+      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
       <Calendar />
     </div>
-  </template>
-  
-  <!-- importing component calendar -->
-  <script>
-  import Calendar from '~/components/Calendar.vue'
-  
-  export default {
-    components: {
-      Calendar
-    }
-  }
-  </script>
+  </div>
+</template>
+
+<!-- importing component calendar -->
+<script setup>
+import Calendar from '~/components/DisplayCalendar.vue'
+</script>
