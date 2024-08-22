@@ -2,16 +2,16 @@
   <div class="max-w-7xl mx-auto navigation py-2 flex justify-between items-center sticky">
     <div class="flex space-x-6">
       <!-- nav icons -->
-      <a href="#home" class="text-2xl text-secondary">
+      <a href="https://x.com/coogesports" target="_blank" rel="noopener noreferrer" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fab', 'x-twitter']" />
       </a>
-      <a href="#about" class="text-2xl text-secondary">
+      <a href="https://www.instagram.com/coogesports/" target="_blank" rel="noopener noreferrer" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fab', 'instagram']" />
       </a>
-      <a href="#" class="text-2xl text-secondary">
+      <a href="https://www.twitch.tv/coogesports" target="_blank" rel="noopener noreferrer" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fab', 'twitch']" />
       </a>
-      <a href="#contact" class="text-2xl text-secondary">
+      <a href="https://discord.com/invite/coog-gaming-154441500950921216" target="_blank" rel="noopener noreferrer" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fab', 'discord']" />
       </a>
     </div>

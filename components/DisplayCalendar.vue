@@ -31,17 +31,18 @@ class="h-6 w-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 
       <div class="grid grid-cols-7 border-t border-l border-gray-300">
         <!-- Day headers -->
         <div
-v-for="dayName in days" :key="dayName"
+          v-for="dayName in days" :key="dayName"
           class="text-center text-gray-600 font-bold p-2 border-r border-b border-gray-300">
           {{ dayName }}
         </div>
 
-        <!-- Render previous month's days -->
-        <div v-for="(day, index) in previousMonthDays" :key="'prev-' + index"
+        <!-- previous month's days -->
+        <div
+          v-for="(day, index) in previousMonthDays" :key="'prev-' + index"
           class="relative text-center py-2 focus:outline-none border-r border-b border-gray-300 h-24 bg-gray-200 text-gray-400">
           <div class="absolute top-0 left-0 ml-1 mt-1 text-sm">{{ day }}</div>
 
-          <!-- Display events for previous month's days -->
+          <!-- display events for previous month's days -->
           <div v-if="getEventsForDate(day).length" class="absolute bottom-0 left-0 ml-1 mb-1 text-xs text-black">
             <button v-for="event in getEventsForDate(day)" :key="event.title">
               {{ event.title }}
@@ -51,8 +52,9 @@ v-for="dayName in days" :key="dayName"
           </div>
         </div>
 
-        <!-- Render current month's days -->
-        <div v-for="(date) in daysInMonth" :key="date.format('YYYY-MM-DD')"
+        <!-- current month's days -->
+        <div
+          v-for="(date) in daysInMonth" :key="date.format('YYYY-MM-DD')"
           class="relative text-center py-2 focus:outline-none border-r border-b border-gray-300 h-24" :class="[
             {
               'bg-red-500 bg-opacity-50 font-bold ': isToday(date),
@@ -61,10 +63,9 @@ v-for="dayName in days" :key="dayName"
             'calendar-day'
           ]">
           <div class="absolute top-0 left-0 ml-1 mt-1 text-sm text-gray-600">{{ date.date() }}</div>
-
-          <!-- Display events for the current date -->
           <div v-if="getEventsForDate(date).length" class="absolute bottom-0 left-0 ml-1 mb-1 text-xs text-black">
             <!-- could be anchor tag link to scroll down page for event description -->
+             
              <!-- might need to add event id for primary key to match schemaa -->
             <button v-for="event in getEventsForDate(date)" :key="event.title">
               {{ event.title }}
@@ -74,13 +75,13 @@ v-for="dayName in days" :key="dayName"
           </div>
         </div>
 
-        <!-- Render next month's days -->
+        <!-- next month's days -->
         <div
-v-for="(day, index) in nextMonthDays" :key="'next-' + index"
+          v-for="(day, index) in nextMonthDays" :key="'next-' + index"
           class="relative text-center py-2 focus:outline-none border-r border-b border-gray-300 h-24 bg-gray-200 text-gray-400">
           <div class="absolute top-0 left-0 ml-1 mt-1 text-sm">{{ day }}</div>
 
-          <!-- Display events for next month's days -->
+          <!-- display events for next month's days -->
           <div v-if="getEventsForDate(day).length" class="absolute bottom-0 left-0 ml-1 mb-1 text-xs text-blue-600">
             <button v-for="event in getEventsForDate(day)" :key="event.title">
               {{ event.title }}
@@ -99,7 +100,7 @@ v-for="(day, index) in nextMonthDays" :key="'next-' + index"
 import { ref, computed } from 'vue'
 import dayjs from 'dayjs'
 
-// Reactive state
+// reactive state
 const currentMonth = ref(dayjs().month())
 const currentYear = ref(dayjs().year())
 
@@ -163,7 +164,7 @@ const previousMonthDays = computed(() => {
   const previousMonth = startOfMonth.subtract(1, 'month')
   const daysInPreviousMonth = previousMonth.daysInMonth()
 
-  const leadingDays = startOfMonth.day() // Days before the first day of the current month
+  const leadingDays = startOfMonth.day() // days in prev month on current month calendar
   const previousMonthDaysArray = []
 
   for (let i = daysInPreviousMonth - leadingDays + 1; i <= daysInPreviousMonth; i++) {
@@ -175,7 +176,7 @@ const previousMonthDays = computed(() => {
 
 const nextMonthDays = computed(() => {
   const endOfMonth = dayjs().year(currentYear.value).month(currentMonth.value).endOf('month')
-  const trailingDays = 6 - endOfMonth.day() // Days after the last day of the current month
+  const trailingDays = 6 - endOfMonth.day() // days in next month on current month calendar
   const nextMonthDaysArray = []
 
   for (let i = 1; i <= trailingDays; i++) {
@@ -190,7 +191,7 @@ const nextMonthDays = computed(() => {
 const isToday = (date) => date.isSame(dayjs(), 'day')
 const isCurrentMonth = (date) => date.month() === currentMonth.value
 
-// Computed property to get events for a specific date
+// get events for days displayed on calendar
 const getEventsForDate = (date) => {
   return events.value.filter(event => dayjs(event.date).isSame(date, 'day'))
 }

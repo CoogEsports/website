@@ -7,7 +7,7 @@
       <!-- game filter tabs -->
       <div class="flex gap-2 mb-4">
         <button
-v-for="filter in filters" :key="filter" :class="selectedFilter === filter ? 'bg-red-600 text-white' : 'bg-gray-700 text-gray-400'"
+          v-for="filter in filters" :key="filter" :class="selectedFilter === filter ? 'bg-red-600 text-white' : 'bg-gray-700 text-gray-400'"
           class="py-2 px-4 rounded hover:bg-red-500 transition-colors duration-300"
           @click="setFilter(filter)">
           {{ filter }}
@@ -18,7 +18,7 @@ v-for="filter in filters" :key="filter" :class="selectedFilter === filter ? 'bg-
       <div class="space-y-4">
         <div class="relative z-10 bg-black bg-opacity-60 p-3 rounded-lg" style="height: h-32; overflow-y: auto;">
           <div
-v-for="(match, index) in filteredMatches" :key="index"
+            v-for="(match, index) in filteredMatches" :key="index"
             class="relative p-6  my-5 rounded-lg flex justify-between items-center bg-cover"
             :class="getBackgroundClass(match.game)">
             <div class="absolute inset-0 bg-gradient-to-r from-gray-950 from-10% to-black opacity-80"/>

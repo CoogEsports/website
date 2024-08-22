@@ -8,11 +8,12 @@
           adipiscing elit. Maecenas in scelerisque ligula. Nullam massa velit, lacinia eu facilisis eget, tempor blandit
           lacus.</p>
 
-        <!-- FIXME: generic link to UH's student org page -->
         <a href="https://uh.edu/getinvolved/" target="_blank" rel="noopener noreferrer">
-        <button type="button"
-          class="px-6 py-3.5 text-base font-medium text-center text-white bg-transparent border-2">Learn
-          More</button>
+          <button 
+            type="button"
+            class="px-6 py-3.5 text-base font-medium text-center text-white bg-transparent border-2">
+            Learn More
+          </button>
         </a>
       </div>
     </div>
