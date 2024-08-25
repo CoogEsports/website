@@ -11,13 +11,17 @@ export default {
   theme: {
     fontFamily: {
       sans: ['Lexend'],
+      arimo: ['Arimo'],
     },
     extend: {
       colors: {
         'base': '#151313',
         'primary': '#89141b',
         'secondary': '#f0333d',
-        'lighter-base': '#1b1b1b',     
+        'lighter-base': '#1b1b1b',
+        'prev-next-month': '#e3e1e2',
+        'calendar': '#cecccd',
+        'current-month': '#f8f8f8', 
       },
       backgroundImage: {
         'val-bg': "url('/assets/img/val_bg_gray.png')",

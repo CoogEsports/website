@@ -11,10 +11,10 @@
           :key="filter"
           :class="
             selectedFilter === filter
-              ? 'bg-red-600 text-white'
+              ? 'bg-primary text-white'
               : 'bg-gray-700 text-gray-400'
           "
-          class="py-2 px-4 rounded hover:bg-red-500 transition-colors duration-300"
+          class="py-2 px-4 rounded hover:bg-secondary transition-colors duration-300"
           @click="setFilter(filter)"
         >
           {{ filter }}
