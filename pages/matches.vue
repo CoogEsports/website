@@ -2,58 +2,98 @@
   <div class="min-h-screen bg-lighter-base text-white font-sans">
     <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold mb-6">MATCHES</h1>
-      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" >
 
       <!-- game filter tabs -->
       <div class="flex gap-2 mb-4">
         <button
-          v-for="filter in filters" :key="filter" :class="selectedFilter === filter ? 'bg-red-600 text-white' : 'bg-gray-700 text-gray-400'"
+          v-for="filter in filters"
+          :key="filter"
+          :class="
+            selectedFilter === filter
+              ? 'bg-red-600 text-white'
+              : 'bg-gray-700 text-gray-400'
+          "
           class="py-2 px-4 rounded hover:bg-red-500 transition-colors duration-300"
-          @click="setFilter(filter)">
+          @click="setFilter(filter)"
+        >
           {{ filter }}
         </button>
       </div>
 
       <!-- matches -->
       <div class="space-y-4">
-        <div class="relative z-10 bg-black bg-opacity-60 p-3 rounded-lg" style="height: h-32; overflow-y: auto;">
+        <div
+          class="relative z-10 bg-base bg-opacity-60 p-3 rounded-lg"
+          style="height: h-32; overflow-y: auto"
+        >
           <div
-            v-for="(match, index) in filteredMatches" :key="index"
-            class="relative p-6  my-5 rounded-lg flex justify-between items-center bg-cover"
-            :class="getBackgroundClass(match.game)">
-            <div class="absolute inset-0 bg-gradient-to-r from-gray-950 from-10% to-black opacity-80"/>
+            v-for="(match, index) in filteredMatches"
+            :key="index"
+            class="relative p-12 my-5 rounded-lg flex justify-between items-center bg-cover"
+            :class="getBackgroundClass(match.game)"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-gray-950 from-10% to-black opacity-80"
+            />
 
             <!-- A vs. B  -->
             <div class="relative flex items-center space-x-4 z-10">
               <!-- team A -->
               <div class="flex flex-col items-center space-y-2">
-                <img :src="match.teamA.logo" alt="Team A Logo" class="w-12 h-12" >
-                <span class="font-bold text-center">{{ match.teamA.name }}</span>
+                <img
+                  :src="match.teamA.logo"
+                  alt="Team A Logo"
+                  class="w-12 h-12"
+                >
+                <span class="font-bold text-center">{{
+                  match.teamA.name
+                }}</span>
               </div>
 
               <div class="text-xl font-bold">VS</div>
 
               <!-- team B -->
               <div class="flex flex-col items-center space-y-2">
-                <img :src="match.teamB.logo" alt="Team B Logo" class="w-12 h-12" >
-                <span class="font-bold text-center">{{ match.teamB.name }}</span>
+                <img
+                  :src="match.teamB.logo"
+                  alt="Team B Logo"
+                  class="w-12 h-12"
+                >
+                <span class="font-bold text-center">{{
+                  match.teamB.name
+                }}</span>
               </div>
             </div>
 
             <!-- tourney details -->
-            <div class="relative flex flex-col items-center font-bold text-white text-2xl text-center z-10">
+            <div
+              class="relative flex flex-col items-center font-bold text-white text-2xl text-center z-10"
+            >
               <div>{{ match.tournament }}</div>
-              <div class="text-white text-sm font-bold">{{ match.date }} | {{ match.time }}</div>
+              <div class="text-white text-sm font-bold">
+
+                <!-- idk .toString() kept showing GMT so i had to do this abomination -->
+                {{ match.datetime.format('dddd, MMMM D, YYYY h:mm A') }} {{ getTimeZoneAbbreviation(match.datetime) }}
+              </div>
             </div>
 
             <!-- status -->
             <div class="relative text-center z-10">
-              <div v-if="match.status === 'LIVE'" class="text-secondary font-bold text-xl">
-                <a :href="streamingLink" target="_blank" rel="noopener noreferrer" class="hover:underline">
+              <div
+                v-if="match.status === 'LIVE'"
+                class="text-secondary font-bold text-xl"
+              >
+                <a
+                  :href="streamingLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:underline"
+                >
                   LIVE<font-awesome-icon :icon="['fas', 'circle']" />
                 </a>
               </div>
-              <div v-else class="text-white ">{{ match.status }}</div>
+              <div v-else class="text-white">{{ match.status }}</div>
             </div>
           </div>
         </div>
@@ -62,20 +102,33 @@
   </div>
 </template>
 
-
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from 'vue';
 
 // either need to pull image from DB or have hardcoded logos for all teams
-import coogLogo from '@/assets/img/coog_esports_logo.png'
-import bLogo from '@/assets/img/test_team_b_logo.jpg'
+import coogLogo from '@/assets/img/coog_esports_logo.png';
+import bLogo from '@/assets/img/test_team_b_logo.jpg';
 
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import isBetween from 'dayjs/plugin/isBetween';
+
+// import timezone from 'dayjs/plugin/timezone' // ES 2015
+// extend dayjs with utc and timezone plugins
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(isBetween);
+
+//const userTimezone = dayjs.tz.guess();
+
+dayjs.tz.setDefault('America/Chicago');
 //streaming site link FIXME change before deploy
-const streamingLink = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'
+const streamingLink = 'https://www.youtube.com/watch?v=xvFZjo5PgG0';
 
 // user selected tabs. need to add functionality to disply
-const filters = ['All', 'LoL', 'VAL', 'CS2', 'OW2', 'SSB', 'RL', 'OS']
-const selectedFilter = ref('All')
+const filters = ['All', 'LoL', 'VAL', 'CS2', 'OW2', 'SSB', 'RL', 'OS'];
+const selectedFilter = ref('All');
 
 // matches... to be pulled from DB from api
 // status needs to by dynamically updated.
@@ -86,17 +139,15 @@ const matches = ref([
     teamA: { name: 'UH TEAM A', logo: coogLogo },
     teamB: { name: 'OPPONENT 1', logo: bLogo },
     tournament: 'CVAL SOUTH',
-    date: 'June 1st, 2024',
-    time: '3:00 PM',
-    status: 'LIVE',
+    datetime: dayjs('2024-08-25T05:00:00'),
+    status: 'UPCOMING',
   },
   {
     game: 'VAL',
     teamA: { name: 'UH TEAM A', logo: coogLogo },
     teamB: { name: 'OPPONENT 2', logo: bLogo },
-    tournament: 'FIGHTER\'S CUP',
-    date: 'December 3rd, 2024',
-    time: '5:00 PM',
+    tournament: "FIGHTER'S CUP",
+    datetime: dayjs('2024-08-25T07:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -104,26 +155,23 @@ const matches = ref([
     teamA: { name: 'UH TEAM A', logo: coogLogo },
     teamB: { name: 'OPPONENT 3', logo: bLogo },
     tournament: 'GLOBAL OFFENSIVE LEAGUE',
-    date: 'July 10th, 2024',
-    time: '1:00 PM',
-    status: 'FINISHED',
+    datetime: dayjs('2024-08-25T09:00:00'),
+    status: 'UPCOMING',
   },
   {
     game: 'OW2',
     teamA: { name: 'UH TEAM B', logo: coogLogo },
     teamB: { name: 'OPPONENT 4', logo: bLogo },
     tournament: 'OVERWATCH CHAMPIONSHIP',
-    date: 'August 22nd, 2024',
-    time: '7:00 PM',
-    status: 'LIVE',
+    datetime: dayjs('2024-08-25T11:00:00'),
+    status: 'UPCOMING',
   },
   {
     game: 'SSB',
     teamA: { name: 'UH TEAM C', logo: coogLogo },
     teamB: { name: 'OPPONENT 5', logo: bLogo },
     tournament: 'SMASH BROS BATTLE',
-    date: 'September 15th, 2024',
-    time: '4:00 PM',
+    datetime: dayjs('2024-08-25T13:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -131,94 +179,123 @@ const matches = ref([
     teamA: { name: 'UH TEAM D', logo: coogLogo },
     teamB: { name: 'OPPONENT 6', logo: bLogo },
     tournament: 'ROCKET LEAGUE CHALLENGE',
-    date: 'October 5th, 2024',
-    time: '6:30 PM',
-    status: 'FINISHED',
+    datetime: dayjs('2024-08-25T15:00:00'),
+    status: 'UPCOMING',
   },
   {
     game: 'OS',
     teamA: { name: 'UH TEAM E', logo: coogLogo },
     teamB: { name: 'OPPONENT 7', logo: bLogo },
     tournament: 'OSU MANIA',
-    date: 'November 12th, 2024',
-    time: '2:00 PM',
-    status: 'LIVE',
-  },
-  {
-    game: 'LoL',
-    teamA: { name: 'UH TEAM A', logo: coogLogo },
-    teamB: { name: 'OPPONENT 1', logo: bLogo },
-    tournament: 'CVAL SOUTH',
-    date: 'June 1st, 2024',
-    time: '3:00 PM',
-    status: 'LIVE',
-  },
-  {
-    game: 'VAL',
-    teamA: { name: 'UH TEAM A', logo: coogLogo },
-    teamB: { name: 'OPPONENT 2', logo: bLogo },
-    tournament: 'FIGHTER\'S CUP',
-    date: 'December 3rd, 2024',
-    time: '5:00 PM',
+    datetime: dayjs('2024-08-25T17:00:00'),
     status: 'UPCOMING',
-  },
-  {
-    game: 'CS2',
-    teamA: { name: 'UH TEAM A', logo: coogLogo },
-    teamB: { name: 'OPPONENT 3', logo: bLogo },
-    tournament: 'GLOBAL OFFENSIVE LEAGUE',
-    date: 'July 10th, 2024',
-    time: '1:00 PM',
-    status: 'FINISHED',
-  },
-  {
-    game: 'OW2',
-    teamA: { name: 'UH TEAM B', logo: coogLogo },
-    teamB: { name: 'OPPONENT 4', logo: bLogo },
-    tournament: 'OVERWATCH CHAMPIONSHIP',
-    date: 'August 22nd, 2024',
-    time: '7:00 PM',
-    status: 'LIVE',
-  },
-  {
-    game: 'SSB',
-    teamA: { name: 'UH TEAM C', logo: coogLogo },
-    teamB: { name: 'OPPONENT 5', logo: bLogo },
-    tournament: 'SMASH BROS BATTLE',
-    date: 'September 15th, 2024',
-    time: '4:00 PM',
-    status: 'UPCOMING',
-  },
-  {
-    game: 'RL',
-    teamA: { name: 'UH TEAM D', logo: coogLogo },
-    teamB: { name: 'OPPONENT 6', logo: bLogo },
-    tournament: 'ROCKET LEAGUE CHALLENGE',
-    date: 'October 5th, 2024',
-    time: '6:30 PM',
-    status: 'FINISHED',
-  },
-  {
-    game: 'OS',
-    teamA: { name: 'UH TEAM E', logo: coogLogo },
-    teamB: { name: 'OPPONENT 7', logo: bLogo },
-    tournament: 'OSU MANIA',
-    date: 'November 12th, 2024',
-    time: '2:00 PM',
-    status: 'LIVE',
   },
 ]);
+
+// i began to implement the logic for displaying match time in user's timezone but
+// i finished it and i realized it's still better to just throw [CST/CDT] in escape characters and trashed the idea.
+
+// need to dynamically calc daylight savings to know to display CDT or CST year to year
+// calculate the second Sunday in March
+const getDstStartDate = (year) => {
+  let date = dayjs(`March 1, ${year}`);
+  while (date.day() !== 0) { // find the first Sunday
+    date = date.add(1, 'day');
+  }
+  return date.add(7, 'days'); // add 7 days to get the second Sunday
+};
+
+// calculate the first Sunday in November
+const getDstEndDate = (year) => {
+  let date = dayjs(`November 1, ${year}`);
+  while (date.day() !== 0) { // find the first Sunday
+    date = date.add(1, 'day');
+  }
+  return date; // first Sunday in November
+};
+
+// if DST -> CDT. if not -> CST
+// Centeral Daylight Time vs Central Standard Time
+const isDaylightSavingTime = (date) => {
+  const year = date.year();
+  const dstStart = getDstStartDate(year);
+  const dstEnd = getDstEndDate(year);
+
+  return date.isBetween(dstStart, dstEnd, 'day', '[)');
+};
+
+const getTimeZoneAbbreviation = (datetime) => {
+  const isDST = isDaylightSavingTime(datetime);
+  return isDST ? 'CDT' : 'CST';
+};
+
+// function to check and update the status of past matches
+// for now all mock data is defaulted to 'UPCOMING'
+// only ran once on app load.
+const updateInitialMatchStatus = () => {
+  const now = dayjs(); // DB will be chicago timezone, 
+
+  matches.value.forEach((match) => {
+    const matchTime = match.datetime;
+    if (now.isAfter(matchTime, 'day')) { match.status = 'FINISHED'; }
+  });
+};
+// dynamically update
+const updateMatchStatus = () => {
+  const now = dayjs(); // get current date and time
+
+  matches.value.forEach((match) => {
+    const matchTime = match.datetime;
+    const diffInHours = now.diff(matchTime, 'hour'); // calculate difference in hours
+
+    /*     
+      dayjs documentation is.... nebulous...
+      diff function returns negative when the dayjs object that is being passed as an argument is
+      later compared the dayjs object that is using .diff.
+      e.g. 
+      const day1_mon = dayjs('2024-08-19');
+      const day2_tue = dayjs('2024-08-20'); 
+      const diffInDays = day2_tue.diff(day1_mon, 'day'); -> 1 day
+      but
+      const diffInDays = day1_mon.diff(day2_tue, 'day'); -> -1 day
+
+      so we only have to use hours in our comparison logic
+    */
+    
+    if (diffInHours >= 0 && diffInHours <= 3) { match.status = 'LIVE'; } 
+    else if (diffInHours > 3) { match.status = 'FINISHED'; } 
+    else { match.status = 'UPCOMING'; }  // setting default to 'UPCOMING', redundant but not sure what is good practice
+  });
+};
+
+
+// // convert match times to user's timezone for display
+// const getMatchTimeInUserTimezone = (datetime) => {
+//   return datetime.tz(userTimezone).format('dddd, MMMM D, YYYY h:mm A'); // 
+// };
+// const checkDaylightSavings = () => {
+//   if
+// }
+
+// on mount swap all past matches to FINISHED, run dynamic status function, check every minute
+onMounted(() => {
+  updateInitialMatchStatus();
+  updateMatchStatus();
+  setInterval(updateMatchStatus, 60000);
+});
 
 // return all by default. add pagination.
 // returns filtered games based on user selected tag
 const filteredMatches = computed(() => {
-  if (selectedFilter.value === 'All') return matches.value
-  return matches.value.filter(match => match.game.includes(selectedFilter.value))
-})
+  if (selectedFilter.value === 'All') return matches.value;
+  return matches.value.filter((match) =>
+    match.game.includes(selectedFilter.value)
+  );
+});
 
 const setFilter = (filter) => {
-  selectedFilter.value = filter
-}
+  selectedFilter.value = filter;
+};
 
 // get background image based on game type of match
 const getBackgroundClass = (game) => {
@@ -241,5 +318,4 @@ const getBackgroundClass = (game) => {
       return 'bg-gray-800'; // default
   }
 };
-
 </script>
