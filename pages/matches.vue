@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-lighter-base text-white font-sans">
     <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold mb-6">MATCHES</h1>
-      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" >
+      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c]" >
 
       <!-- game filter tabs -->
       <div class="flex gap-2 mb-4">
@@ -11,10 +11,10 @@
           :key="filter"
           :class="
             selectedFilter === filter
-              ? 'bg-primary text-white'
-              : 'bg-gray-700 text-gray-400'
+              ? 'bg-secondary text-white'
+              : 'bg-[#2c2c2c] text-gray-400'
           "
-          class="py-2 px-4 rounded hover:bg-secondary transition-colors duration-300"
+          class="py-2 px-4 rounded hover:bg-secondary hover:text-white transition-colors duration-300"
           @click="setFilter(filter)"
         >
           {{ filter }}
@@ -22,67 +22,70 @@
       </div>
 
       <!-- matches -->
-      <div class="space-y-4">
+      <div
+      class="static rounded-lg scrollbar scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-[#2c2c2c] h-32 scrollbar-track-base overflow-y-auto"
+      style="height: 1000px">
         <div
-          class="relative z-10 bg-base bg-opacity-60 p-3 rounded-lg"
-          style="height: h-32; overflow-y: auto"
+          class="relative z-10 bg-base bg-opacity-100 py-6 pl-6 pr-2 rounded-lg "
         >
           <div
             v-for="(match, index) in filteredMatches"
             :key="index"
-            class="relative p-12 my-5 rounded-lg flex justify-between items-center bg-cover"
+            class="relative p-10 mb-4 rounded-lg flex justify-between items-center bg-cover"
             :class="getBackgroundClass(match.game)"
           >
             <div
-              class="absolute inset-0 bg-gradient-to-r from-gray-950 from-10% to-black opacity-80"
+              class="absolute text-gray-400 inset-0 bg-gradient-to-r from-black from-10% to-black opacity-80"
             />
 
             <!-- A vs. B  -->
-            <div class="relative flex items-center space-x-4 z-10">
+            <div
+              class="relative flex items-center text-xl text-white z-10"
+            >
               <!-- team A -->
-              <div class="flex flex-col items-center space-y-2">
+              <div class="flex flex-col items-center">
                 <img
                   :src="match.teamA.logo"
                   alt="Team A Logo"
-                  class="w-12 h-12"
+                  class="w-32 h-32 text-2xl"
                 >
-                <span class="font-bold text-center">{{
+                <span class="font-bold text-center mt-8">{{
                   match.teamA.name
                 }}</span>
               </div>
 
-              <div class="text-xl font-bold">VS</div>
+              <div class="text-4xl flex px-1 font-bold text-white">VS</div>
 
               <!-- team B -->
-              <div class="flex flex-col items-center space-y-2">
+              <div class="flex  flex-col items-center object-contain">
                 <img
                   :src="match.teamB.logo"
                   alt="Team B Logo"
-                  class="w-12 h-12"
+                  class="w-32 h-32 text-2xl"
                 >
-                <span class="font-bold text-center">{{
+                <span class="font-bold text-center mt-8">{{
                   match.teamB.name
                 }}</span>
               </div>
             </div>
 
-            <!-- tourney details -->
+            <!-- match details -->
             <div
-              class="relative flex flex-col items-center font-bold text-white text-2xl text-center z-10"
+              class="relative flex flex-col items-center font-bold text-white text-4xl z-10"
             >
-              <div>{{ match.tournament }}</div>
-              <div class="text-white text-sm font-bold">
-
+              <div>{{ match.details }}</div>
+              <div class="text-white text-2xl py-2 font-thin">
                 <!-- idk .toString() kept showing GMT so i had to do this abomination -->
-                {{ match.datetime.format('dddd, MMMM D, YYYY h:mm A') }} {{ getTimeZoneAbbreviation(match.datetime) }}
+                {{ match.datetime.format('MMMM D, YYYY [|] h:mm A') }}
+                {{ getTimeZoneAbbreviation(match.datetime) }}
               </div>
             </div>
 
             <!-- status -->
-            <div class="relative text-center z-10">
+            <div class="relative text-center text-2xl z-10">
               <div
                 v-if="match.status === 'LIVE'"
-                class="text-secondary font-bold text-xl"
+                class="text-secondary font-bold"
               >
                 <a
                   :href="streamingLink"
@@ -93,7 +96,7 @@
                   LIVE<font-awesome-icon :icon="['fas', 'circle']" />
                 </a>
               </div>
-              <div v-else class="text-white">{{ match.status }}</div>
+              <div v-else class="text-white font-thin">{{ match.status }}</div>
             </div>
           </div>
         </div>
@@ -106,7 +109,7 @@
 import { ref, computed } from 'vue';
 
 // either need to pull image from DB or have hardcoded logos for all teams
-import coogLogo from '@/assets/img/coog_esports_logo.png';
+import coogLogo from '@/assets/img/coogesports_w_text.png';
 import bLogo from '@/assets/img/test_team_b_logo.jpg';
 
 import dayjs from 'dayjs';
@@ -136,57 +139,57 @@ const selectedFilter = ref('All');
 const matches = ref([
   {
     game: 'LoL',
-    teamA: { name: 'UH TEAM A', logo: coogLogo },
-    teamB: { name: 'OPPONENT 1', logo: bLogo },
-    tournament: 'CVAL SOUTH',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 1', logo: bLogo },
+    details: 'CVAL SOUTH',
     datetime: dayjs('2024-08-25T05:00:00'),
     status: 'UPCOMING',
   },
   {
     game: 'VAL',
-    teamA: { name: 'UH TEAM A', logo: coogLogo },
-    teamB: { name: 'OPPONENT 2', logo: bLogo },
-    tournament: "FIGHTER'S CUP",
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 2', logo: bLogo },
+    details: "FIGHTER'S CUP",
     datetime: dayjs('2024-08-25T07:00:00'),
     status: 'UPCOMING',
   },
   {
     game: 'CS2',
-    teamA: { name: 'UH TEAM A', logo: coogLogo },
-    teamB: { name: 'OPPONENT 3', logo: bLogo },
-    tournament: 'GLOBAL OFFENSIVE LEAGUE',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 3', logo: bLogo },
+    details: 'GLOBAL OFFENSIVE LEAGUE',
     datetime: dayjs('2024-08-25T09:00:00'),
     status: 'UPCOMING',
   },
   {
     game: 'OW2',
-    teamA: { name: 'UH TEAM B', logo: coogLogo },
-    teamB: { name: 'OPPONENT 4', logo: bLogo },
-    tournament: 'OVERWATCH CHAMPIONSHIP',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 4', logo: bLogo },
+    details: 'OVERWATCH CHAMPIONSHIP',
     datetime: dayjs('2024-08-25T11:00:00'),
     status: 'UPCOMING',
   },
   {
     game: 'SSB',
-    teamA: { name: 'UH TEAM C', logo: coogLogo },
-    teamB: { name: 'OPPONENT 5', logo: bLogo },
-    tournament: 'SMASH BROS BATTLE',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 5', logo: bLogo },
+    details: 'SMASH BROS BATTLE',
     datetime: dayjs('2024-08-25T13:00:00'),
     status: 'UPCOMING',
   },
   {
     game: 'RL',
-    teamA: { name: 'UH TEAM D', logo: coogLogo },
-    teamB: { name: 'OPPONENT 6', logo: bLogo },
-    tournament: 'ROCKET LEAGUE CHALLENGE',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 6', logo: bLogo },
+    details: 'ROCKET LEAGUE CHALLENGE',
     datetime: dayjs('2024-08-25T15:00:00'),
     status: 'UPCOMING',
   },
   {
     game: 'OS',
-    teamA: { name: 'UH TEAM E', logo: coogLogo },
-    teamB: { name: 'OPPONENT 7', logo: bLogo },
-    tournament: 'OSU MANIA',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 7', logo: bLogo },
+    details: 'OSU MANIA',
     datetime: dayjs('2024-08-25T17:00:00'),
     status: 'UPCOMING',
   },
@@ -199,7 +202,8 @@ const matches = ref([
 // calculate the second Sunday in March
 const getDstStartDate = (year) => {
   let date = dayjs(`March 1, ${year}`);
-  while (date.day() !== 0) { // find the first Sunday
+  while (date.day() !== 0) {
+    // find the first Sunday
     date = date.add(1, 'day');
   }
   return date.add(7, 'days'); // add 7 days to get the second Sunday
@@ -208,7 +212,8 @@ const getDstStartDate = (year) => {
 // calculate the first Sunday in November
 const getDstEndDate = (year) => {
   let date = dayjs(`November 1, ${year}`);
-  while (date.day() !== 0) { // find the first Sunday
+  while (date.day() !== 0) {
+    // find the first Sunday
     date = date.add(1, 'day');
   }
   return date; // first Sunday in November
@@ -233,11 +238,13 @@ const getTimeZoneAbbreviation = (datetime) => {
 // for now all mock data is defaulted to 'UPCOMING'
 // only ran once on app load.
 const updateInitialMatchStatus = () => {
-  const now = dayjs(); // DB will be chicago timezone, 
+  const now = dayjs(); // DB will be chicago timezone,
 
   matches.value.forEach((match) => {
     const matchTime = match.datetime;
-    if (now.isAfter(matchTime, 'day')) { match.status = 'FINISHED'; }
+    if (now.isAfter(matchTime, 'day')) {
+      match.status = 'FINISHED';
+    }
   });
 };
 // dynamically update
@@ -261,17 +268,20 @@ const updateMatchStatus = () => {
 
       so we only have to use hours in our comparison logic
     */
-    
-    if (diffInHours >= 0 && diffInHours <= 3) { match.status = 'LIVE'; } 
-    else if (diffInHours > 3) { match.status = 'FINISHED'; } 
-    else { match.status = 'UPCOMING'; }  // setting default to 'UPCOMING', redundant but not sure what is good practice
+
+    if (diffInHours >= 0 && diffInHours <= 3) {
+      match.status = 'LIVE';
+    } else if (diffInHours > 3) {
+      match.status = 'FINISHED';
+    } else {
+      match.status = 'UPCOMING';
+    } // setting default to 'UPCOMING', redundant but not sure what is good practice
   });
 };
 
-
 // // convert match times to user's timezone for display
 // const getMatchTimeInUserTimezone = (datetime) => {
-//   return datetime.tz(userTimezone).format('dddd, MMMM D, YYYY h:mm A'); // 
+//   return datetime.tz(userTimezone).format('dddd, MMMM D, YYYY h:mm A'); //
 // };
 // const checkDaylightSavings = () => {
 //   if
@@ -301,7 +311,7 @@ const setFilter = (filter) => {
 const getBackgroundClass = (game) => {
   switch (game) {
     case 'LoL':
-      return 'bg-lol-bg bg-cover bg-center';
+      return 'bg-lol-bg bg-cover bg-center ';
     case 'VAL':
       return 'bg-val-bg bg-cover ';
     case 'CS2':

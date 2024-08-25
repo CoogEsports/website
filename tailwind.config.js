@@ -34,5 +34,10 @@ export default {
       }
     },
   },
-  plugins: [],
+  variants: {
+    scrollbar: ['rounded'], // if using a custom plugin for rounded scrollbars
+  },
+  plugins: [
+    require('tailwind-scrollbar')// add this if using a scrollbar plugin
+  ],
 };

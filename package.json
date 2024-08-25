@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@nuxt/eslint": "^0.3.13",
+    "@opentelemetry/api": "1.8.0",
     "dayjs": "^1.11.11",
     "nuxt": "^3.12.2",
     "vue": "^3.4.29",
@@ -25,6 +26,7 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
     "prettier": "3.3.1",
+    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "^3.4.9"
   }
 }
