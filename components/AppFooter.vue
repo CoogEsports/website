@@ -24,9 +24,9 @@
       <div class="text-center">
         <div class="text-lg font-semibold">SPONSORED BY</div>
         <div class="flex space-x-6 justify-center mt-2">
-          <img src="/assets/img/your_logo_here.jpg" alt="Logo0" class="h-20">
-          <img src="/assets/img/your_logo_here.jpg" alt="Logo1" class="h-20">
-          <img src="/assets/img/your_logo_here.jpg" alt="Logo2" class="h-20">
+          <img src="/assets/img/sponsor_logos/your_logo_here.jpg" alt="Logo0" class="h-20">
+          <img src="/assets/img/sponsor_logos/your_logo_here.jpg" alt="Logo1" class="h-20">
+          <img src="/assets/img/sponsor_logos/your_logo_here.jpg" alt="Logo2" class="h-20">
         </div>
       </div>
 

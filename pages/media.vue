@@ -189,9 +189,9 @@
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
-import testImg from '@/assets/img/1355994.jpg';
-import testImg2 from '@/assets/img/test_img2.jpg';
-import testImg3 from '@/assets/img/test_img3.jpg';
+import testImg from '@/assets/img/media_page/1355994.jpg';
+import testImg2 from '@/assets/img/media_page/test_img2.jpg';
+import testImg3 from '@/assets/img/media_page/test_img3.jpg';
 
 // reactive variable to store the URL of the expanded image
 const expandedImageUrl = ref(null);

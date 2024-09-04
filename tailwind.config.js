@@ -23,14 +23,24 @@ export default {
         'calendar': '#cecccd',
         'current-month': '#f8f8f8', 
       },
+      // need to cycle thru if multiple per game. TODO. FIXME.
       backgroundImage: {
-        'val-bg': "url('/assets/img/val_bg_gray.png')",
-        'ow2-bg': "url('/assets/img/ow2_bg_gray.png')",
-        'os-bg': "url('/assets/img/os_bg_gray_2.png')",
-        'cs2-bg': "url('/assets/img/cs2_bg_gray.png')",
-        'lol-bg': "url('/assets/img/lol_bg_gray.png')",
-        'rl-bg': "url('/assets/img/rl_bg_gray.png')",
-        'ssbu-bg': "url('/assets/img/ssbu_bg_gray.png')",
+        'val-bg': "url('/assets/img/game_bg/val_bg_gray_gradient.png')",
+        'ow2-bg': "url('/assets/img/game_bg/ow2_bg_gray_gradient.png')",
+        'cs2-bg': "url('/assets/img/game_bg/cs2_bg_gray_gradient.png')",
+        'lol-bg': "url('/assets/img/game_bg/lol_bg_gray_gradient.png')",
+        'rl-bg': "url('/assets/img/game_bg/rl_bg_gray_gradient.png')",
+        'ssbu-bg': "url('/assets/img/game_bg/ssbu_bg_gray_gradient.png')",
+        'apex-bg': "url('/assets/img/game_bg/apex_bg_gray_gradient.png')",
+        'fortnite-bg': "url('/assets/img/game_bg/fortnite_bg_gray_2_gradient.png')",
+        'tcg-bg': "url('/assets/img/game_bg/tcg_bg_gray_gradient.png')",
+        'pokemon-bg': "url('/assets/img/game_bg/pokemon_bg_gray_3_gradient.png')",
+        'fgc-bg': "url('/assets/img/game_bg/fgc_bg_gray_3_gradient.png')",
+
+        // ---------- opacity/50 ---------------
+        'tcg-faded-bg': "url('/assets/img/game_bg/tcg_bg_gray_faded_50_gradient.png')",
+
+        
       }
     },
   },

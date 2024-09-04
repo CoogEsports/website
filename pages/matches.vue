@@ -23,10 +23,11 @@
 
       <!-- matches -->
       <div
-      class="static rounded-lg scrollbar scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-[#2c2c2c] h-32 scrollbar-track-base overflow-y-auto"
-      style="height: 1000px">
+        class="static rounded-lg scrollbar scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-[#2c2c2c] h-32 scrollbar-track-base overflow-y-auto"
+        style="height: 1000px"
+      >
         <div
-          class="relative z-10 bg-base bg-opacity-100 py-6 pl-6 pr-2 rounded-lg "
+          class="relative z-10 bg-base bg-opacity-100 py-6 pl-6 pr-2 rounded-lg"
         >
           <div
             v-for="(match, index) in filteredMatches"
@@ -35,13 +36,11 @@
             :class="getBackgroundClass(match.game)"
           >
             <div
-              class="absolute text-gray-400 inset-0 bg-gradient-to-r from-black from-10% to-black opacity-80"
+              class="absolute text-gray-400 inset-0 bg-gradient-to-r from-black from-10% to-black opacity-50"
             />
 
             <!-- A vs. B  -->
-            <div
-              class="relative flex items-center text-xl text-white z-10"
-            >
+            <div class="relative flex items-center text-xl text-white z-10">
               <!-- team A -->
               <div class="flex flex-col items-center">
                 <img
@@ -57,7 +56,7 @@
               <div class="text-4xl flex px-1 font-bold text-white">VS</div>
 
               <!-- team B -->
-              <div class="flex  flex-col items-center object-contain">
+              <div class="flex flex-col items-center object-contain">
                 <img
                   :src="match.teamB.logo"
                   alt="Team B Logo"
@@ -109,8 +108,8 @@
 import { ref, computed } from 'vue';
 
 // either need to pull image from DB or have hardcoded logos for all teams
-import coogLogo from '@/assets/img/coogesports_w_text.png';
-import bLogo from '@/assets/img/test_team_b_logo.jpg';
+import coogLogo from '@/assets/img/team_logos/coog_resized_for_gc.png';
+import bLogo from '@/assets/img/team_logos/test_team_b_logo.jpg';
 
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -130,7 +129,20 @@ dayjs.tz.setDefault('America/Chicago');
 const streamingLink = 'https://www.youtube.com/watch?v=xvFZjo5PgG0';
 
 // user selected tabs. need to add functionality to disply
-const filters = ['All', 'LoL', 'VAL', 'CS2', 'OW2', 'SSB', 'RL', 'OS'];
+const filters = [
+  'All',
+  'LoL',
+  'VAL',
+  'CS2',
+  'OW2',
+  'SSBU',
+  'RL',
+  'APEX',
+  'FORTNITE',
+  'FGC',
+  'POKEMON',
+  'TCG',
+];
 const selectedFilter = ref('All');
 
 // matches... to be pulled from DB from api
@@ -170,7 +182,7 @@ const matches = ref([
     status: 'UPCOMING',
   },
   {
-    game: 'SSB',
+    game: 'SSBU',
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 5', logo: bLogo },
     details: 'SMASH BROS BATTLE',
@@ -186,10 +198,42 @@ const matches = ref([
     status: 'UPCOMING',
   },
   {
-    game: 'OS',
+    game: 'APEX',
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 7', logo: bLogo },
-    details: 'OSU MANIA',
+    details: 'APEX OF THE APEX',
+    datetime: dayjs('2024-08-25T17:00:00'),
+    status: 'UPCOMING',
+  },
+  {
+    game: 'FGC',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 8', logo: bLogo },
+    details: 'EVO UH',
+    datetime: dayjs('2024-08-25T17:00:00'),
+    status: 'UPCOMING',
+  },
+  {
+    game: 'FORTNITE',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 9', logo: bLogo },
+    details: 'NIGHT OF THE FORT',
+    datetime: dayjs('2024-08-25T17:00:00'),
+    status: 'UPCOMING',
+  },
+  {
+    game: 'POKEMON',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 10', logo: bLogo },
+    details: 'Catching All of Them',
+    datetime: dayjs('2024-08-25T17:00:00'),
+    status: 'UPCOMING',
+  },
+  {
+    game: 'TCG',
+    teamA: { name: 'University of Houston', logo: coogLogo },
+    teamB: { name: 'University of Opponents 11', logo: bLogo },
+    details: 'Gather the Magicks',
     datetime: dayjs('2024-08-25T17:00:00'),
     status: 'UPCOMING',
   },
@@ -255,20 +299,6 @@ const updateMatchStatus = () => {
     const matchTime = match.datetime;
     const diffInHours = now.diff(matchTime, 'hour'); // calculate difference in hours
 
-    /*     
-      dayjs documentation is.... nebulous...
-      diff function returns negative when the dayjs object that is being passed as an argument is
-      later compared the dayjs object that is using .diff.
-      e.g. 
-      const day1_mon = dayjs('2024-08-19');
-      const day2_tue = dayjs('2024-08-20'); 
-      const diffInDays = day2_tue.diff(day1_mon, 'day'); -> 1 day
-      but
-      const diffInDays = day1_mon.diff(day2_tue, 'day'); -> -1 day
-
-      so we only have to use hours in our comparison logic
-    */
-
     if (diffInHours >= 0 && diffInHours <= 3) {
       match.status = 'LIVE';
     } else if (diffInHours > 3) {
@@ -278,14 +308,6 @@ const updateMatchStatus = () => {
     } // setting default to 'UPCOMING', redundant but not sure what is good practice
   });
 };
-
-// // convert match times to user's timezone for display
-// const getMatchTimeInUserTimezone = (datetime) => {
-//   return datetime.tz(userTimezone).format('dddd, MMMM D, YYYY h:mm A'); //
-// };
-// const checkDaylightSavings = () => {
-//   if
-// }
 
 // on mount swap all past matches to FINISHED, run dynamic status function, check every minute
 onMounted(() => {
@@ -318,12 +340,20 @@ const getBackgroundClass = (game) => {
       return 'bg-cs2-bg bg-cover ';
     case 'OW2':
       return 'bg-ow2-bg bg-cover bg-center';
-    case 'SSB':
+    case 'SSBU':
       return 'bg-ssbu-bg bg-cover bg-center';
     case 'RL':
       return 'bg-rl-bg bg-cover bg-center';
-    case 'OS':
-      return 'bg-os-bg bg-cover bg-left';
+    case 'APEX':
+      return 'bg-apex-bg bg-cover bg-center';
+    case 'FORTNITE':
+      return 'bg-fortnite-bg bg-cover bg-center';
+    case 'FGC':
+      return 'bg-fgc-bg bg-cover bg-center';
+    case 'POKEMON':
+      return 'bg-pokemon-bg bg-cover bg-center';
+    case 'TCG':
+      return 'bg-tcg-bg bg-cover bg-center';
     default:
       return 'bg-gray-800'; // default
   }
