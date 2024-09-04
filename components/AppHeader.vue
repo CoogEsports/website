@@ -51,11 +51,11 @@
       <NuxtLink to="/events" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Events
       </NuxtLink>
+      <NuxtLink to="/matches" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
+        Matches
+      </NuxtLink>
       <NuxtLink to="/media" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Media
-      </NuxtLink>
-      <NuxtLink to="/matches" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
-        MATCHES
       </NuxtLink>
       <NuxtLink to="/contact" exact-active-class="border border-primary" class="text-white uppercase px-4 py-2">
         Contact
