@@ -154,7 +154,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 1', logo: bLogo },
     details: 'CVAL SOUTH',
-    datetime: dayjs('2024-09-03T12:00:00'),
+    datetime: dayjs('2024-09-04T12:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -162,7 +162,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 2', logo: bLogo },
     details: "FIGHTER'S CUP",
-    datetime: dayjs('2024-09-03T14:00:00'),
+    datetime: dayjs('2024-09-04T14:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -170,7 +170,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 3', logo: bLogo },
     details: 'GLOBAL OFFENSIVE LEAGUE',
-    datetime: dayjs('2024-09-03T09:00:00'),
+    datetime: dayjs('2024-09-04T09:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -178,7 +178,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 4', logo: bLogo },
     details: 'OVERWATCH CHAMPIONSHIP',
-    datetime: dayjs('2024-09-03T11:00:00'),
+    datetime: dayjs('2024-09-04T11:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -186,7 +186,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 5', logo: bLogo },
     details: 'SMASH BROS BATTLE',
-    datetime: dayjs('2024-09-03T16:00:00'),
+    datetime: dayjs('2024-09-04T16:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -194,7 +194,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 6', logo: bLogo },
     details: 'ROCKET LEAGUE CHALLENGE',
-    datetime: dayjs('2024-09-03T17:00:00'),
+    datetime: dayjs('2024-09-04T17:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -202,7 +202,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 7', logo: bLogo },
     details: 'APEX OF THE APEX',
-    datetime: dayjs('2024-09-03T17:00:00'),
+    datetime: dayjs('2024-09-04T17:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -210,7 +210,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 8', logo: bLogo },
     details: 'EVO UH',
-    datetime: dayjs('2024-09-03T18:00:00'),
+    datetime: dayjs('2024-09-04T18:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -218,7 +218,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 9', logo: bLogo },
     details: 'NIGHT OF THE FORT',
-    datetime: dayjs('2024-09-03T19:00:00'),
+    datetime: dayjs('2024-09-04T19:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -226,7 +226,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 10', logo: bLogo },
     details: 'Catching All of Them',
-    datetime: dayjs('2024-09-03T20:00:00'),
+    datetime: dayjs('2024-09-04T20:00:00'),
     status: 'UPCOMING',
   },
   {
@@ -234,7 +234,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 11', logo: bLogo },
     details: 'Gather the Magicks',
-    datetime: dayjs('2024-09-03T21:30:00'),
+    datetime: dayjs('2024-09-04T21:30:00'),
     status: 'UPCOMING',
   },
 ]);
@@ -299,9 +299,9 @@ const updateMatchStatus = () => {
     const matchTime = match.datetime;
     const diffInHours = now.diff(matchTime, 'hour'); // calculate difference in hours
 
-    if (diffInHours >= 0 && diffInHours <= 3) {
+    if (diffInHours >= 0 && diffInHours <= 2) {
       match.status = 'LIVE';
-    } else if (diffInHours > 3) {
+    } else if (diffInHours > 2) {
       match.status = 'FINISHED';
     } else {
       match.status = 'UPCOMING';
@@ -314,6 +314,7 @@ onMounted(() => {
   updateInitialMatchStatus();
   updateMatchStatus();
   setInterval(updateMatchStatus, 60000);
+
 });
 
 // return all by default. add pagination.

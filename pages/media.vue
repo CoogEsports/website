@@ -127,7 +127,7 @@
         <div class="items-center flex">
           <button
             :disabled="currentPage === 1"
-            :class="{ 'opacity- cursor-not-allowed': currentPage === 1 }"
+            :class="{ 'opacity-25 cursor-not-allowed': currentPage === 1 }"
             @click="previousPage"
           >
             <svg
