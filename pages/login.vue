@@ -51,93 +51,47 @@ export default {
 </script>
 
 <style scoped>
-
-
 .login-page {
-  width: 100vw;
-  height: 80vh;
-  background-image: url('/assets/img/loginbg.png'); /* Adjust the path if needed */
-  background-size: 35%; /* Adjust this value to scale the image */
+  @apply w-screen h-[80vh] bg-gray-600 flex justify-center items-center overflow-hidden;
+  background-image: url('/assets/img/loginbg.png');
+  background-size: 35%;
   background-repeat: no-repeat;
   background-position: center center;
-  background-color: #646464;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Prevent scrollbars */
 }
 
 .login-container {
-  width: 500px;
-  height: 60vh;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: white;
+  @apply w-[500px] h-[60vh] p-5 rounded-lg bg-black bg-opacity-75 shadow-lg text-white;
 }
 
 .login-title {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 40px;
+  @apply text-center mb-5 text-[40px];
 }
-
 
 .login-subtitle {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 15px; /* Adjust the font size as needed */
-  color: white; /* Adjust the color as needed */
+  @apply text-center mb-2 text-sm text-white;
 }
 
-
 .input-group {
-  margin-bottom: 15px;
+  @apply mb-4;
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
-  color: white;
+  @apply block mb-1 text-white;
 }
 
 input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #ffffff;
-  color: white;
+  @apply w-full p-2 border border-gray-300 rounded-lg bg-white text-gray-900;
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  background-color: #e20002;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
+  @apply w-full p-2 bg-red-600 rounded-lg text-white text-base cursor-pointer hover:bg-red-700;
 }
 
 .signup-link {
-  text-align: center;
-  margin-top: 15px;
-  color: white;
+  @apply text-center mt-4 text-white;
 }
 
 .signup-link a {
-  color: #e20002;
-  text-decoration: none;
-}
-
-.signup-link a:hover {
-  text-decoration: underline;
+  @apply text-red-600 no-underline hover:underline;
 }
 </style>
