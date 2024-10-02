@@ -47,22 +47,21 @@
         >
       </a>
 
-      <!-- additional nav icons on the right -->
-      <div class="flex space-x-6 items-center justify-end">
-        <a href="#home" class="text-2xl text-secondary">
-          <font-awesome-icon :icon="['fas', 'bag-shopping']" />
-        </a>
-        <a href="#about" class="text-2xl text-secondary">
-          <font-awesome-icon :icon="['fas', 'gear']" />
-        </a>
-        <a href="#about" class="text-2xl text-secondary">
-          <font-awesome-icon :icon="['fas', 'rss']" />
-        </a>
-        <a href="#about" class="text-2xl text-secondary">
-          <font-awesome-icon :icon="['fas', 'user']" />
-        </a>
-      </div>
+    <div class="flex space-x-6">
+      <a href="#home" class="text-2xl text-secondary">
+        <font-awesome-icon :icon="['fas', 'bag-shopping']" />
+      </a>
+      <a href="#about" class="text-2xl text-secondary">
+        <font-awesome-icon :icon="['fas', 'gear']" />
+      </a>
+      <a href="#about" class="text-2xl text-secondary">
+        <font-awesome-icon :icon="['fas', 'rss']" />
+      </a>
+      <nuxt-link to="/login" class="text-2xl text-secondary"> <!-- Correct link to login page -->
+        <font-awesome-icon :icon="['fas', 'user']" />
+      </nuxt-link>
     </div>
+  </div>
 
     <!-- main navigation links centered below -->
     <div class="mt-4 max-w-7xl mx-auto">
