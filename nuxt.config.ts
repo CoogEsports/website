@@ -18,4 +18,10 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/eslint'],
+
+  build: {
+    transpile: [
+      "@fortawesome/vue-fontawesome"
+    ]
+  },
 });
