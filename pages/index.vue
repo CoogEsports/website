@@ -1,5 +1,5 @@
 <template>
-  <!-- Main Section -->
+  <!--  Hero Section -->
   <section class="bg-center bg-cover bg-[url('/assets/img/hero.jpg')] bg-primary bg-blend-multiply">
     <div class="max-w-7xl mx-auto py-48">
       <h1 class="text-4xl font-extrabold tracking-light leading-none text-white uppercase">University of Houston</h1>
