@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-gray-1000 text-white py-8">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
       <!-- social media links -->
       <div class="flex flex-col items-start space-y-2">
         <div class="text-lg font-semibold">LET'S CONNECT</div>
@@ -23,19 +23,21 @@
       <!-- sponsors. REPLACE LOGOS WHEN SPONSORED -->
       <div class="text-center flex flex-col items-center" style="padding-left: 150px;">
         <div class="text-lg font-semibold">SPONSORED BY</div>
-        <div class="flex space-x-6 mt-2">
-          <img src="/assets/img/your_logo_here.jpg" alt="Logo0" class="h-20">
-          <img src="/assets/img/your_logo_here.jpg" alt="Logo1" class="h-20">
-          <img src="/assets/img/your_logo_here.jpg" alt="Logo2" class="h-20">
+        <div class="flex items-center justify-center space-x-6 mt-2">
+          <img src="/assets/img/sponsor_logos/your_logo_here.jpg" alt="Logo0" class="h-20">
+          <img src="/assets/img/sponsor_logos/your_logo_here.jpg" alt="Logo1" class="h-20">
+          <img src="/assets/img/sponsor_logos/your_logo_here.jpg" alt="Logo2" class="h-20">
         </div>
       </div>
 
-      <!-- contact info. could be pulled from DB maybe -->
-      <div class="text-right">
+      <!-- contact info -->
+      <div class="text-right flex flex-col space-y-2">
         <div class="font-semibold text-lg">University of Houston Esports Club</div>
         <div>4465 University Dr. MAILBOX 50</div>
         <div>Houston, TX 77204</div>
-        <div><a href="mailto:coogesports@gmail.com" class="underline">coogesports@gmail.com</a></div>
+        <div>
+          <a href="mailto:coogesports@gmail.com" class="underline">coogesports@gmail.com</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -43,10 +45,6 @@
 
 <script>
 export default {
-  name: 'AppFooter'
-}
+  name: 'AppFooter',
+};
 </script>
-
-<style scoped>
-/* additional specific styling can be added here */
-</style>
