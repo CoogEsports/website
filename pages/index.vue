@@ -186,37 +186,19 @@
             </div>
           </div>
         </div>
-
-        <!-- <div class="space-y-6 mt-4">
-          <div class="p-6 bg-white shadow-lg rounded-lg">
-            <h3 class="text-2xl font-bold text-gray-700">
-              Upcoming Tournament
-            </h3>
-            <p class="text-lg text-gray-600">
-              Join us for the next campus-wide tournament on November 15th.
-            </p>
-          </div>
-          <div class="p-6 bg-white shadow-lg rounded-lg">
-            <h3 class="text-2xl font-bold text-gray-700">New Team Members</h3>
-            <p class="text-lg text-gray-600">
-              We are thrilled to welcome three new members to the team!
-            </p>
-          </div>
-        </div> -->
       </div>
     </section>
 
     <!-- should be pulling from data not hard coded -brespina -->
-    <!-- Our Teams Section -->
+    <!-- teams  -->
     <section class="bg-lighter-base py-8">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl font-extrabold text-white uppercase mb-8 text-left">
-          Our Teams
+          Teams
         </h2>
-
         <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <!-- League of Legends Team -->
+          <!-- lol -->
           <div
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
@@ -227,7 +209,7 @@
             >
           </div>
 
-          <!-- Overwatch Team -->
+          <!-- ow2 -->
           <div
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
@@ -238,7 +220,7 @@
             >
           </div>
 
-          <!-- Rocket League Team -->
+          <!-- rl -->
           <div
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
@@ -249,7 +231,7 @@
             >
           </div>
 
-          <!-- Counter-Strike 2 Team -->
+          <!-- cs2 -->
           <div
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >

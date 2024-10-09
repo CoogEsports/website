@@ -49,7 +49,7 @@
 
     <!-- additional nav icons on the right -->
     <div class="flex space-x-6 items-center justify-end">
-      <a href="#home" class="text-2xl text-secondary">
+      <!-- <a href="#home" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fas', 'bag-shopping']" />
       </a>
       <a href="#about" class="text-2xl text-secondary">
@@ -57,8 +57,8 @@
       </a>
       <a href="#about" class="text-2xl text-secondary">
         <font-awesome-icon :icon="['fas', 'rss']" />
-      </a>
-      <a href="/login" class="text-2xl text-secondary">
+      </a> -->
+      <a href="/login" class="text-2xl justify-self-end text-secondary">
         <font-awesome-icon :icon="['fas', 'user']" />
       </a>
     </div>

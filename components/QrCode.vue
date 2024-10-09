@@ -21,8 +21,10 @@
   </div>
 </template>
 
+
 <script setup>
-import { ref, watch, defineProps, defineEmits } from 'vue';
+// removed defineEmits, as it is a compiler macro and does not need to be imported
+import { ref, watch } from 'vue';
 
 const props = defineProps({
   show: {
