@@ -81,9 +81,6 @@ updated: 10/08/2024 (added test qr code tied to every event)
               <a
                 v-for="event in getEventsForDate(pmDay)"
                 :key="event.id"
-                :href="
-                  '#event-' + event.title.replace(/\s+/g, '-').toLowerCase()
-                "
                 :class="{ 'line-through': isPastEvent(event.datetime) }"
                 class="text-xs ellipsis-multiline"
               >
@@ -124,7 +121,6 @@ updated: 10/08/2024 (added test qr code tied to every event)
             <a
               v-for="event in getEventsForDate(date)"
               :key="event.id"
-              :href="'#event-' + event.title.replace(/\s+/g, '-').toLowerCase()"
               :class="{ 'line-through': isPastEvent(event.datetime) }"
               class="font-arimo text-xs font-bold text-[#333333] ellipsis-multiline"
             >
@@ -156,7 +152,6 @@ updated: 10/08/2024 (added test qr code tied to every event)
             <a
               v-for="event in getEventsForDate(nmDay)"
               :key="event.id"
-              :href="'#event-' + event.title.replace(/\s+/g, '-').toLowerCase()"
               :class="{ 'line-through': isPastEvent(event.datetime) }"
               class="text-xs flexbox text-[#b3b2b2] ellipsis-multiline"
             >

@@ -52,7 +52,7 @@
             <div class="flex justify-between items-center text-white mb-4">
               <div class="flex space-x-2">
                 <!-- these buttons do nothing -brespina -->
-                <button
+                <!-- <button
                   class="px-4 py-2 bg-[#2c2c2c] text-gray-400 rounded font-sans"
                 >
                   Previous
@@ -61,7 +61,7 @@
                   class="px-4 py-2 bg-[#2c2c2c] text-gray-400 rounded font-sans"
                 >
                   Next
-                </button>
+                </button> -->
               </div>
             </div>
             <div class="grid grid-cols-7 gap-4">
@@ -145,9 +145,9 @@
                 </p>
               </div>
             </div>
-            <div class="py-9 text-center">
+            <div class="pt-20 py-10 text-center">
               <div
-                class="mt-48 py-5 bg-current-month shadow-lg rounded-lg justify-end"
+                class="mt-48 py-4 bg-current-month shadow-lg rounded-lg justify-end"
               >
                 <h3 class="text-2xl font-bold text-gray-700">
                   Upcoming Tournament
