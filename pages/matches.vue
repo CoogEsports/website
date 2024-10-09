@@ -154,39 +154,39 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 1', logo: bLogo },
     details: 'CVAL SOUTH',
-    datetime: dayjs('2024-09-04T12:00:00'),
-    status: 'UPCOMING',
+    datetime: dayjs('2024-10-08T12:00:00'), // Finished yesterday
+    status: 'FINISHED',
   },
   {
     game: 'VAL',
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 2', logo: bLogo },
     details: "FIGHTER'S CUP",
-    datetime: dayjs('2024-09-04T14:00:00'),
-    status: 'UPCOMING',
+    datetime: dayjs('2024-10-09T08:00:00'),
+    status: 'FINISHED',
   },
   {
     game: 'CS2',
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 3', logo: bLogo },
     details: 'GLOBAL OFFENSIVE LEAGUE',
-    datetime: dayjs('2024-09-04T09:00:00'),
-    status: 'UPCOMING',
+    datetime: dayjs('2024-10-09T14:00:00'), // Ongoing
+    status: 'ONGOING',
   },
   {
     game: 'OW2',
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 4', logo: bLogo },
     details: 'OVERWATCH CHAMPIONSHIP',
-    datetime: dayjs('2024-09-04T11:00:00'),
-    status: 'UPCOMING',
+    datetime: dayjs('2024-10-09T17:00:00'), // Ongoing
+    status: 'ONGOING',
   },
   {
     game: 'SSBU',
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 5', logo: bLogo },
     details: 'SMASH BROS BATTLE',
-    datetime: dayjs('2024-09-04T16:00:00'),
+    datetime: dayjs('2024-10-09T19:00:00'), // Upcoming
     status: 'UPCOMING',
   },
   {
@@ -194,7 +194,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 6', logo: bLogo },
     details: 'ROCKET LEAGUE CHALLENGE',
-    datetime: dayjs('2024-09-04T17:00:00'),
+    datetime: dayjs('2024-10-09T20:00:00'), // Upcoming
     status: 'UPCOMING',
   },
   {
@@ -202,7 +202,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 7', logo: bLogo },
     details: 'APEX OF THE APEX',
-    datetime: dayjs('2024-09-04T17:00:00'),
+    datetime: dayjs('2024-10-09T22:00:00'), // Upcoming
     status: 'UPCOMING',
   },
   {
@@ -210,7 +210,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 8', logo: bLogo },
     details: 'EVO UH',
-    datetime: dayjs('2024-09-04T18:00:00'),
+    datetime: dayjs('2024-10-10T18:00:00'), // Upcoming
     status: 'UPCOMING',
   },
   {
@@ -218,7 +218,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 9', logo: bLogo },
     details: 'NIGHT OF THE FORT',
-    datetime: dayjs('2024-09-04T19:00:00'),
+    datetime: dayjs('2024-10-10T19:00:00'), // Upcoming
     status: 'UPCOMING',
   },
   {
@@ -226,7 +226,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 10', logo: bLogo },
     details: 'Catching All of Them',
-    datetime: dayjs('2024-09-04T20:00:00'),
+    datetime: dayjs('2024-10-10T20:00:00'), // Upcoming
     status: 'UPCOMING',
   },
   {
@@ -234,7 +234,7 @@ const matches = ref([
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 11', logo: bLogo },
     details: 'Gather the Magicks',
-    datetime: dayjs('2024-09-04T21:30:00'),
+    datetime: dayjs('2024-10-10T21:30:00'), // Upcoming
     status: 'UPCOMING',
   },
 ]);
