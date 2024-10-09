@@ -225,7 +225,7 @@
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
             <img
-              src="/assets/img/rl-logo.png"
+              src="/assets/img/rl-logo-better.png"
               alt="Rocket League Logo"
               class="h-28 w-auto"
             >
@@ -236,7 +236,7 @@
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
             <img
-              src="/assets/img/cs2-logo.png"
+              src="/assets/img/cs2-logo-better.png"
               alt="Counter-Strike 2 Logo"
               class="h-28 w-auto"
             >
@@ -258,7 +258,7 @@
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
             <img
-              src="/assets/img/smash-logo.png"
+              src="/assets/img/ssbu-logo-2.png"
               alt="Smash Bros Logo"
               class="h-28 w-auto"
             >
