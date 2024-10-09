@@ -68,14 +68,13 @@
               <!-- everything should be pulled from mock data not hard coded. -brespina -->
               <!-- take advantage of grids use v-for to generate so my eyes are not accosted -brespina -->
               <!-- Days of the week -->
-              <div class="text-center text-lg font-bold text-gray-400">Sun</div>
-              <div class="text-center text-lg font-bold text-gray-400">Mon</div>
-              <div class="text-center text-lg font-bold text-gray-400">Tue</div>
-              <div class="text-center text-lg font-bold text-gray-400">Wed</div>
-              <div class="text-center text-lg font-bold text-gray-400">Thu</div>
-              <div class="text-center text-lg font-bold text-gray-400">Fri</div>
-              <div class="text-center text-lg font-bold text-gray-400">Sat</div>
-
+              <div
+                v-for="(day, index) in daysOfWeek"
+                :key="index"
+                class="text-center text-lg font-bold text-gray-400"
+              >
+                {{ day }}
+              </div>
               <!-- text is not controlled for overflow -brespina -->
               <!-- sweet baby jebus use v-for pls -brespina -->
               <!-- Announcements for each day -->
@@ -190,7 +189,7 @@
     </section>
 
     <!-- should be pulling from data not hard coded -brespina -->
-    <!-- teams  -->
+    <!-- teams -->
     <section class="bg-lighter-base py-8">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl font-extrabold text-white uppercase mb-8 text-left">
@@ -198,87 +197,17 @@
         </h2>
         <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <!-- lol -->
           <div
+            v-for="(team, index) in teams"
+            :key="index"
             class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
-            <img
-              src="/assets/img/lol-logo.png"
-              alt="League of Legends Logo"
-              class="h-28 w-auto"
-            >
-          </div>
-
-          <!-- ow2 -->
-          <div
-            class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
-          >
-            <img
-              src="/assets/img/ow-logo.png"
-              alt="Overwatch Logo"
-              class="h-24 w-auto"
-            >
-          </div>
-
-          <!-- rl -->
-          <div
-            class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
-          >
-            <img
-              src="/assets/img/rl-logo-better.png"
-              alt="Rocket League Logo"
-              class="h-28 w-auto"
-            >
-          </div>
-
-          <!-- cs2 -->
-          <div
-            class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
-          >
-            <img
-              src="/assets/img/cs2-logo-better.png"
-              alt="Counter-Strike 2 Logo"
-              class="h-28 w-auto"
-            >
-          </div>
-
-          <!-- Valorant Team -->
-          <div
-            class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
-          >
-            <img
-              src="/assets/img/valorant-logo.png"
-              alt="Valorant Logo"
-              class="h-28 w-auto"
-            >
-          </div>
-
-          <!-- Smash Bros Team -->
-          <div
-            class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
-          >
-            <img
-              src="/assets/img/ssbu-logo-2.png"
-              alt="Smash Bros Logo"
-              class="h-28 w-auto"
-            >
-          </div>
-
-          <!-- Apex Legends Team -->
-          <div
-            class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
-          >
-            <img
-              src="/assets/img/apex-logo.png"
-              alt="Apex Legends Logo"
-              class="h-28 w-auto"
-            >
+            <img :src="team.logo" :alt="team.alt" class="h-28 w-auto" >
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Meet Our Coordinators Section -->
+    <!-- coords -->
     <section class="bg-base my-8 pb-8">
       <div class="max-w-7xl mx-auto text-left">
         <h2 class="text-5xl font-extrabold text-white uppercase mb-8">
@@ -287,32 +216,18 @@
 
         <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
-          <!-- Coordinator 1 -->
-          <div class="bg-lighter-base rounded-lg text-center p-6">
-            <!-- <img src="/assets/img/coordinator1.jpg" alt="Coordinator 1" class="h-28 w-auto mx-auto rounded-full mb-4"> -->
-            <h3 class="text-xl font-bold text-white">John Doe</h3>
-            <p class="text-gray-400">Event Coordinator</p>
-          </div>
-
-          <!-- Coordinator 2 -->
-          <div class="bg-lighter-base rounded-lg text-center p-6">
-            <!-- <img src="/assets/img/coordinator2.jpg" alt="Coordinator 2" class="h-28 w-auto mx-auto rounded-full mb-4"> -->
-            <h3 class="text-xl font-bold text-white">Jane Smith</h3>
-            <p class="text-gray-400">Community Manager</p>
-          </div>
-
-          <!-- Coordinator 3 -->
-          <div class="bg-lighter-base rounded-lg text-center p-6">
-            <!-- <img src="/assets/img/coordinator3.jpg" alt="Coordinator 3" class="h-28 w-auto mx-auto rounded-full mb-4"> -->
-            <h3 class="text-xl font-bold text-white">Alex Brown</h3>
-            <p class="text-gray-400">Strategy Lead</p>
+          <div
+            v-for="(coordinator, index) in coordinators"
+            :key="index"
+            class="bg-lighter-base rounded-lg text-center p-6"
+          >
+            <h3 class="text-xl font-bold text-white">{{ coordinator.name }}</h3>
+            <p class="text-gray-400">{{ coordinator.position }}</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- pull, from, mock data, -brespina -->
-    <!-- Meet Our Officers Section -->
+    <!-- officers -->
     <section class="bg-lighter-base text-gray-400 py-12">
       <div class="max-w-7xl mx-auto text-left">
         <h2 class="text-5xl font-extrabold text-white uppercase mb-8">
@@ -321,52 +236,18 @@
 
         <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          <!-- Officer 1 -->
-          <div class="bg-[#2c2c2c] rounded-lg text-center p-6">
+          <div
+            v-for="(officer, index) in officers"
+            :key="index"
+            class="bg-[#2c2c2c] rounded-lg text-center p-6"
+          >
             <img
-              src="/assets/img/officer1.jpg"
-              alt="Officer 1"
+              :src="officer.imgSrc"
+              :alt="`Officer ${index + 1}`"
               class="h-28 w-auto mx-auto rounded-full mb-4"
             >
-            <h3 class="text-xl font-bold text-white">Harris "Axe" Ali</h3>
-            <p class="text-gray-400">President</p>
-          </div>
-
-          <!-- Officer 2 -->
-          <div class="bg-[#2c2c2c] rounded-lg text-center p-6">
-            <img
-              src="/assets/img/officer2.jpg"
-              alt="Officer 2"
-              class="h-28 w-auto mx-auto rounded-full mb-4"
-            >
-            <h3 class="text-xl font-bold text-white">
-              Katherine "katwnotail" Delgado
-            </h3>
-            <p class="text-gray-400">Vice President</p>
-          </div>
-
-          <!-- Officer 3 -->
-          <div class="bg-[#2c2c2c] rounded-lg text-center p-6">
-            <img
-              src="/assets/img/officer3.jpg"
-              alt="Officer 3"
-              class="h-28 w-auto mx-auto rounded-full mb-4"
-            >
-            <h3 class="text-xl font-bold text-white">
-              Hunter "Apollo" Johnson
-            </h3>
-            <p class="text-gray-400">Treasurer</p>
-          </div>
-
-          <!-- Officer 4 -->
-          <div class="bg-[#2c2c2c] rounded-lg text-center p-6">
-            <img
-              src="/assets/img/officer4.jpg"
-              alt="Officer 4"
-              class="h-28 w-auto mx-auto rounded-full mb-4"
-            >
-            <h3 class="text-xl font-bold text-white">Bianca "binko" Panes</h3>
-            <p class="text-gray-400">Secretary</p>
+            <h3 class="text-xl font-bold text-white">{{ officer.name }}</h3>
+            <p class="text-gray-400">{{ officer.position }}</p>
           </div>
         </div>
       </div>
@@ -376,6 +257,88 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import prezImg from '@/assets/img/officer1.jpg';
+import vpImg from '@/assets/img/officer2.jpg';
+import treasurerImg from '@/assets/img/officer3.jpg';
+import secretaryImg from '@/assets/img/officer4.jpg';
+import lolLogo from '/assets/img/lol-logo.png';
+import owLogo from '/assets/img/ow-logo.png';
+import rlLogo from '/assets/img/rl-logo-better.png';
+import cs2Logo from '/assets/img/cs2-logo-better.png';
+import valorantLogo from '/assets/img/valorant-logo.png';
+import ssbuLogo from '/assets/img/ssbu-logo-2.png';
+import apexLogo from '/assets/img/apex-logo.png';
+
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+const officers = ref([
+  {
+    name: 'Harris "Axe" Ali',
+    position: 'President',
+    imgSrc: prezImg,
+  },
+  {
+    name: 'Katherine "katwnotail" Delgado',
+    position: 'Vice President',
+    imgSrc: vpImg,
+  },
+  {
+    name: 'Hunter "Apollo" Johnson',
+    position: 'Treasurer',
+    imgSrc: treasurerImg,
+  },
+  {
+    name: 'Bianca "binko" Panes',
+    position: 'Secretary',
+    imgSrc: secretaryImg,
+  },
+]);
+
+const coordinators = ref([
+  {
+    name: 'John Doe',
+    position: 'Event Coordinator',
+  },
+  {
+    name: 'Jane Smith',
+    position: 'Community Manager',
+  },
+  {
+    name: 'Alex Brown',
+    position: 'Strategy Lead',
+  },
+]);
+
+const teams = ref([
+  {
+    logo: lolLogo,
+    alt: 'League of Legends Logo',
+  },
+  {
+    logo: owLogo,
+    alt: 'Overwatch Logo',
+  },
+  {
+    logo: rlLogo,
+    alt: 'Rocket League Logo',
+  },
+  {
+    logo: cs2Logo,
+    alt: 'Counter-Strike 2 Logo',
+  },
+  {
+    logo: valorantLogo,
+    alt: 'Valorant Logo',
+  },
+  {
+    logo: ssbuLogo,
+    alt: 'Smash Bros Logo',
+  },
+  {
+    logo: apexLogo,
+    alt: 'Apex Legends Logo',
+  },
+]);
 
 onMounted(() => {
   // Load Twitter widget script
