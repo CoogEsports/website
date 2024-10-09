@@ -169,7 +169,7 @@ const matches = ref([
     game: 'CS2',
     teamA: { name: 'University of Houston', logo: coogLogo },
     teamB: { name: 'University of Opponents 3', logo: bLogo },
-    details: 'GLOBAL OFFENSIVE LEAGUE',
+    details: 'STRIKING COUNTERS TWICE MAJOR',
     datetime: dayjs('2024-10-09T14:00:00'), // Ongoing
     status: 'ONGOING',
   },
