@@ -200,7 +200,7 @@
           <div
             v-for="(team, index) in teams"
             :key="index"
-            class="bg-[#2c2c2c] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
+            class="bg-[#2c2c2c] px-1 rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
           >
             <img :src="team.logo" :alt="team.alt" class="h-28 w-auto" >
           </div>
