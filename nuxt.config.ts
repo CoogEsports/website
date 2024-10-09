@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   css: [
     '~/assets/css/main.css',
     '@fortawesome/fontawesome-svg-core/styles.css'
@@ -24,4 +25,6 @@ export default defineNuxtConfig({
       "@fortawesome/vue-fontawesome"
     ]
   },
+
+  compatibilityDate: '2024-10-08',
 });

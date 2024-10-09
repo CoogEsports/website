@@ -1,7 +1,13 @@
-<!--TODO
+<!-- DisplayCalendar.vue
+
 created: 06/27/2024 author of todo: brandon
-updated: 09/03/2024
-1. create a sign-in form for members to digitally sign in
+updated: 10/08/2024 (added test qr code tied to every event)
+
+-->
+<!--TODO
+  1. figure out qrcode generation display with admin linking qrcode
+  2. only display qrcode when admin links correct google form
+  3. allow admin to close qr code 
 -->
 
 <template>
@@ -74,10 +80,7 @@ updated: 09/03/2024
             >
               <a
                 v-for="event in getEventsForDate(pmDay)"
-                :key="event.title"
-                :href="
-                  '#event-' + event.title.replace(/\s+/g, '-').toLowerCase()
-                "
+                :key="event.id"
                 :class="{ 'line-through': isPastEvent(event.datetime) }"
                 class="text-xs ellipsis-multiline"
               >
@@ -117,8 +120,7 @@ updated: 09/03/2024
             <!-- might need to add event id for primary key to match schemaa -->
             <a
               v-for="event in getEventsForDate(date)"
-              :key="event.title"
-              :href="'#event-' + event.title.replace(/\s+/g, '-').toLowerCase()"
+              :key="event.id"
               :class="{ 'line-through': isPastEvent(event.datetime) }"
               class="font-arimo text-xs font-bold text-[#333333] ellipsis-multiline"
             >
@@ -149,8 +151,7 @@ updated: 09/03/2024
           >
             <a
               v-for="event in getEventsForDate(nmDay)"
-              :key="event.title"
-              :href="'#event-' + event.title.replace(/\s+/g, '-').toLowerCase()"
+              :key="event.id"
               :class="{ 'line-through': isPastEvent(event.datetime) }"
               class="text-xs flexbox text-[#b3b2b2] ellipsis-multiline"
             >
@@ -171,19 +172,26 @@ updated: 09/03/2024
 
   <h1 class="text-3xl font-bold text-secondary my-8 mb-10">UPCOMING EVENTS</h1>
 
-  <!-- display future events in a grid layout -->
+  <!-- Display future events in a grid layout -->
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-    <div v-for="event in futureEvents" :key="event.title">
+    <div
+      v-for="event in futureEvents"
+      :key="event.id"
+      @click="handleEventClick(event)"
+    >
       <div
         class="bg-current-month h-full text-black border border-gray-300 rounded-md overflow-hidden"
       >
-        <!-- content container with padding and spacing -->
+        <!-- Content container with padding and spacing -->
         <div class="p-4">
           <h2
             class="text-lg font-arimo font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap"
           >
             {{ event.title }}
           </h2>
+          <p class="font-bold text-secondary text-md mb-1 cursor-pointer">
+            | QR-Code |
+          </p>
           <p class="text-sm mb-1">
             Date: {{ event.datetime.format('dddd, MMMM D, YYYY') }}
           </p>
@@ -195,6 +203,9 @@ updated: 09/03/2024
       </div>
     </div>
   </div>
+
+  <!-- qrcode component call -->
+  <QRCode :show="showQrCode" :data="googleFormUrl" @close="closeQrCode" />
 
   <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" >
 
@@ -208,16 +219,13 @@ updated: 09/03/2024
   </button>
 
   <!-- display past events -->
-    <!-- display future events in a grid layout -->
-    <div
-      v-if="showPastEvents" 
-      class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-    <div v-for="event in pastEvents" :key="event.title">
+  <div v-if="showPastEvents" class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div v-for="event in pastEvents" :key="event.id">
       <div
         class="bg-prev-next-month h-full text-black border border-gray-300 rounded-md overflow-hidden"
       >
         <!-- content container with padding and spacing -->
-        <div class="p-4 line-through ">
+        <div class="p-4 line-through">
           <h2
             class="text-lg font-arimo font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap"
           >
@@ -239,7 +247,21 @@ updated: 09/03/2024
 <script setup>
 import { ref, computed } from 'vue';
 import dayjs from 'dayjs';
+import QRCode from '~/components/QrCode.vue';
 
+const showQrCode = ref(false);
+const googleFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfMdLMAN-vGrqv828vVxpweRaD4yJm3RWm7Zb55KT8ke_7Ysg/viewform?usp=sf_link';
+
+// Function to handle event click and show QR code
+const handleEventClick = () => {
+  showQrCode.value = true; // Show QR code modal when an event is clicked
+};
+
+// Function to close the QR code modal
+const closeQrCode = () => {
+  showQrCode.value = false; // Hide QR code modal when close is emitted
+};
 // reactive state for current date
 const today = ref(dayjs().startOf('day'));
 const currentMonth = ref(dayjs().month());
@@ -264,16 +286,19 @@ const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
 const events = ref([
   {
+    id: '1',
     title: '1st General Meeting',
     datetime: dayjs('2024-08-22T20:00:00'),
     description: 'PLACEHOLDER',
   },
   {
+    id: '2',
     title: 'a duuuu',
     datetime: dayjs('2024-08-13T20:00:00'),
     description: 'PLACEHOLDER',
   },
   {
+    id: '3',
     title:
       'Custom ARAM with Officers AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFGRHUIEJAHTGRUIESHGUIRHESIL;GREUIGSHGRLUIEGUIEHTG UIERH',
     datetime: dayjs('2024-09-03T19:50:00'),
@@ -281,74 +306,87 @@ const events = ref([
   },
 
   {
+    id: '4',
     title: 'black myth wukong no hit run',
     datetime: dayjs('2024-08-25T19:00:00'),
     description: 'PLACEHOLDER',
   },
   {
+    id: '5',
     title: 'obamna',
     datetime: dayjs('2024-06-30T21:00:00'),
     description: 'PLACEHOLDER',
   },
   {
+    id: '6',
     title: 'demure',
     datetime: dayjs('2024-08-01T21:00:00'),
     description: 'PLACEHOLDER',
   },
   {
+    id: '7',
     title: 'Community Game Night',
     datetime: dayjs('2024-09-05T18:00:00'),
     description:
       'Join us for a fun game night with various board games and video games.',
   },
   {
+    id: '8',
     title: 'Tech Talk: AI Innovations',
     datetime: dayjs('2024-09-10T17:30:00'),
     description:
       'A discussion on the latest innovations in AI technology with industry experts.',
   },
   {
+    id: '9',
     title: 'Weekend Workshop: Coding for Beginners',
     datetime: dayjs('2024-09-15T10:00:00'),
     description:
       'A hands-on workshop for beginners to learn the basics of coding.',
   },
   {
+    id: '10',
     title: 'Charity Run for Health',
     datetime: dayjs('2024-09-20T08:00:00'),
     description:
       'Participate in a charity run to support health-related causes.',
   },
   {
+    id: '11',
     title: 'Monthly Book Club Meeting',
     datetime: dayjs('2024-09-25T19:00:00'),
     description: 'Discuss the latest book with fellow book enthusiasts.',
   },
   {
+    id: '12',
     title: 'Tech Conference 2024',
     datetime: dayjs('2024-10-01T09:00:00'),
     description:
       'Join us for a tech conference featuring keynote speakers and breakout sessions.',
   },
   {
+    id: '13',
     title: 'Halloween Costume Party',
     datetime: dayjs('2024-10-31T20:00:00'),
     description:
       'Dress up and enjoy a spooky evening with music, games, and prizes.',
   },
   {
+    id: '14',
     title: 'Thanksgiving Potluck',
     datetime: dayjs('2024-11-28T12:00:00'),
     description:
       'Celebrate Thanksgiving with a potluck dinner. Bring a dish to share!',
   },
   {
+    id: '15',
     title: 'Winter Wonderland Gala',
     datetime: dayjs('2024-12-15T18:00:00'),
     description:
       'Enjoy an elegant evening at our Winter Wonderland Gala with fine dining and entertainment.',
   },
   {
+    id: '16',
     title: "New Year's Eve Celebration",
     datetime: dayjs('2024-12-31T22:00:00'),
     description:

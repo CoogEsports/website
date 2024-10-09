@@ -1,218 +1,355 @@
+<!-- 
+    this code was not using tailwindcss, not eslint, not .prettier formatting either,
+    i have taken it upon myself to redo this page. -brespina  
+-->
 <template>
-  <!--  Hro Section -->
-  <section class="bg-center bg-cover bg-[url('/assets/img/hero.jpg')] bg-primary bg-blend-multiply">
-    <div class="max-w-7xl mx-auto py-48">
-      <h1 class="text-4xl font-extrabold tracking-light leading-none text-white uppercase">University of Houston</h1>
-      <h1 class="text-8xl font-extrabold tracking-light leading-none text-white uppercase">eSports</h1>
-      <div class="max-w-4xl">
-        <p class="mb-4 text-lg font-extrabold text-white lg:text-xl py-4">Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Maecenas in scelerisque ligula. Nullam massa velit, lacinia eu facilisis eget, tempor blandit
-          lacus.</p>
-        <button type="button"
-          class="px-6 py-3.5 text-base font-medium text-center text-white bg-transparent border-2">Learn
-          More</button>
+  <div>
+    <!-- again, pull from mock data, not hardcode -brespina -->
+    <!--  Hro Section -->
+    <section
+      class="bg-center bg-cover bg-[url('/assets/img/hero.jpg')] bg-primary bg-blend-multiply"
+    >
+      <div class="max-w-7xl mx-auto py-48">
+        <h1
+          class="text-4xl font-extrabold tracking-light leading-none text-white uppercase"
+        >
+          University of Houston
+        </h1>
+        <h1
+          class="text-8xl font-extrabold tracking-light leading-none text-white uppercase"
+        >
+          eSports
+        </h1>
+        <div class="max-w-4xl">
+          <p class="mb-4 text-lg font-extrabold text-white lg:text-xl py-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in
+            scelerisque ligula. Nullam massa velit, lacinia eu facilisis eget,
+            tempor blandit lacus.
+          </p>
+          <!-- button does nothing -brespina -->
+          <button
+            type="button"
+            class="px-6 py-3.5 text-base font-medium text-center text-white bg-transparent border-2"
+          >
+            Learn More
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Announcements Section with Twitter Embed -->
-  <section class="bg-gray-1000 py-24">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-5xl font-extrabold text-white uppercase mb-8">Announcements</h2>
+    <!-- Announcements Section with Twitter Embed -->
+    <section class="bg-gray-1000 mt-12">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-5xl font-extrabold text-white uppercase mb-8">
+          Announcements
+        </h2>
+        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
 
-      <!-- Flex container for calendar and Twitter -->
-      <div class="flex space-x-8">
-        <!-- Weekly Calendar Section -->
-        <div class="flex-1 mb-8">
-          <div class="flex justify-between items-center text-white mb-4">
-            <div class="flex space-x-2">
-              <button class="px-4 py-2 bg-blue-600 rounded">Previous</button>
-              <button class="px-4 py-2 bg-blue-600 rounded">Next</button>
+        <!-- Flex container for calendar and Twitter -->
+        <div class="flex space-x-8">
+          <!-- Weekly Calendar Section -->
+          <div class="flex-1 mb-8">
+            <div class="flex justify-between items-center text-white mb-4">
+              <div class="flex space-x-2">
+                <!-- these buttons do nothing -brespina -->
+                <!-- <button
+                  class="px-4 py-2 bg-[#2c2c2c] text-gray-400 rounded font-sans"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-4 py-2 bg-[#2c2c2c] text-gray-400 rounded font-sans"
+                >
+                  Next
+                </button> -->
+              </div>
+            </div>
+            <div class="grid grid-cols-7 gap-4">
+              <!-- everything should be pulled from mock data not hard coded. -brespina -->
+              <!-- take advantage of grids use v-for to generate so my eyes are not accosted -brespina -->
+              <!-- Days of the week -->
+              <div
+                v-for="(day, index) in daysOfWeek"
+                :key="index"
+                class="text-center text-lg font-bold text-gray-400"
+              >
+                {{ day }}
+              </div>
+              <!-- text is not controlled for overflow -brespina -->
+              <!-- sweet baby jebus use v-for pls -brespina -->
+              <!-- Announcements for each day -->
+              <div
+                class="bg-current-month p-4 rounded-lg shadow-lg overflow-hidden text-ellipsis"
+              >
+                <h4 class="font-bold overflow-hidden text-ellipsis">
+                  Tournament
+                </h4>
+                <p class="overflow-hidden text-ellipsis">
+                  Join us for the tournament this Sunday!
+                </p>
+              </div>
+              <div class="bg-current-month p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold overflow-hidden text-ellipsis">
+                  Team Meeting
+                </h4>
+                <p class="overflow-hidden text-ellipsis">
+                  Weekly team meeting on Monday.
+                </p>
+              </div>
+              <div
+                class="bg-current-month p-4 rounded-lg shadow-lg overflow-hidden text-ellipsis"
+              >
+                <h4 class="font-bold overflow-hidden text-ellipsis">
+                  Game Night
+                </h4>
+                <p class="overflow-hidden text-ellipsis">
+                  Game night on Tuesday, don&apos;t miss it!
+                </p>
+              </div>
+              <div
+                class="bg-current-month p-4 rounded-lg shadow-lg overflow-hidden text-ellipsis"
+              >
+                <h4 class="font-bold overflow-hidden text-ellipsis">
+                  Strategy Session
+                </h4>
+                <p class="overflow-hidden text-ellipsis">
+                  Strategy session on Wednesday.
+                </p>
+              </div>
+              <div
+                class="bg-current-month p-4 rounded-lg shadow-lg overflow-hidden text-ellipsis"
+              >
+                <h4 class="font-bold overflow-hidden text-ellipsis">
+                  Practice
+                </h4>
+                <p class="overflow-hidden text-ellipsis">
+                  Practice matches on Thursday.
+                </p>
+              </div>
+              <div
+                class="bg-current-month p-4 rounded-lg shadow-lg overflow-hidden text-ellipsis"
+              >
+                <h4 class="font-bold overflow-hidden text-ellipsis">
+                  Game Streaming
+                </h4>
+                <p class="overflow-hidden text-ellipsis">
+                  Watch us stream our games on Friday!
+                </p>
+              </div>
+              <div
+                class="bg-current-month p-4 rounded-lg shadow-lg overflow-hidden text-ellipsis"
+              >
+                <h4 class="font-bold overflow-hidden text-ellipsis">Recap</h4>
+                <p class="overflow-hidden text-ellipsis">
+                  Weekly recap on Saturday.
+                </p>
+              </div>
+            </div>
+            <div class="pt-20 py-10 text-center">
+              <div
+                class="mt-48 py-4 bg-current-month shadow-lg rounded-lg justify-end"
+              >
+                <h3 class="text-2xl font-bold text-gray-700">
+                  Upcoming Tournament
+                </h3>
+                <p class="text-lg text-gray-600">
+                  Join us for the next campus-wide tournament on November 15th.
+                </p>
+              </div>
+              <div class="mt-12 py-5 bg-white shadow-lg rounded-lg">
+                <h3 class="text-2xl font-bold text-gray-700">
+                  New Team Members
+                </h3>
+                <p class="text-lg text-gray-600">
+                  We are thrilled to welcome three new members to the team!
+                </p>
+              </div>
             </div>
           </div>
-          <div class="grid grid-cols-7 gap-4">
-            <!-- Days of the week -->
-            <div class="text-center text-lg font-bold text-gray-400">Sun</div>
-            <div class="text-center text-lg font-bold text-gray-400">Mon</div>
-            <div class="text-center text-lg font-bold text-gray-400">Tue</div>
-            <div class="text-center text-lg font-bold text-gray-400">Wed</div>
-            <div class="text-center text-lg font-bold text-gray-400">Thu</div>
-            <div class="text-center text-lg font-bold text-gray-400">Fri</div>
-            <div class="text-center text-lg font-bold text-gray-400">Sat</div>
-            <!-- Announcements for each day -->
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-bold">Tournament</h4>
-              <p>Join us for the tournament this Sunday!</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-bold">Team Meeting</h4>
-              <p>Weekly team meeting on Monday.</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-bold">Game Night</h4>
-              <p>Game night on Tuesday, don't miss it!</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-bold">Strategy Session</h4>
-              <p>Strategy session on Wednesday.</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-bold">Practice</h4>
-              <p>Practice matches on Thursday.</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-bold">Game Streaming</h4>
-              <p>Watch us stream our games on Friday!</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-bold">Recap</h4>
-              <p>Weekly recap on Saturday.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Twitter Embedded Timeline -->
-        <div class="flex-none w-1/3">
-          <div class="p-6 bg-white shadow-lg rounded-lg" style="height: 800px; overflow-y: auto;">
-            <div id="twitter-container">
-              <a class="twitter-timeline" href="https://twitter.com/coogesports?ref_src=twsrc%5Etfw">Tweets by coogesports</a>
+          <!-- cool -brespina -->
+          <!-- Twitter Embedded Timeline -->
+          <div class="flex-none w-1/3">
+            <div
+              class="p-6 bg-white shadow-lg rounded-lg"
+              style="height: 800px; overflow-y: auto"
+            >
+              <div id="twitter-container">
+                <a
+                  class="twitter-timeline"
+                  href="https://twitter.com/coogesports?ref_src=twsrc%5Etfw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Tweets by coogesports</a
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="space-y-6">
-        <!-- Example Announcement -->
-        <div class="p-6 bg-white shadow-lg rounded-lg">
-          <h3 class="text-2xl font-bold text-gray-700">Upcoming Tournament</h3>
-          <p class="text-lg text-gray-600">Join us for the next campus-wide tournament on November 15th.</p>
-        </div>
-        <div class="p-6 bg-white shadow-lg rounded-lg">
-          <h3 class="text-2xl font-bold text-gray-700">New Team Members</h3>
-          <p class="text-lg text-gray-600">We are thrilled to welcome three new members to the team!</p>
+    <!-- should be pulling from data not hard coded -brespina -->
+    <!-- teams -->
+    <section class="bg-lighter-base py-8">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-5xl font-extrabold text-white uppercase mb-8 text-left">
+          Teams
+        </h2>
+        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div
+            v-for="(team, index) in teams"
+            :key="index"
+            class="bg-[#2c2c2c] px-1 rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center"
+          >
+            <img :src="team.logo" :alt="team.alt" class="h-28 w-auto" >
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- coords -->
+    <section class="bg-base my-8 pb-8">
+      <div class="max-w-7xl mx-auto text-left">
+        <h2 class="text-5xl font-extrabold text-white uppercase mb-8">
+          Coordinators
+        </h2>
 
-  <!-- Our Teams Section -->
-  <section class="bg-gray-1000 py-24">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-5xl font-extrabold text-white uppercase mb-8 text-center">Our Teams</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <!-- League of Legends Team -->
-        <div class="bg-[#202020] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center">
-          <img src="/assets/img/lol-logo.png" alt="League of Legends Logo" class="h-28 w-auto">
-        </div>
-
-        <!-- Overwatch Team -->
-        <div class="bg-[#202020] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center">
-          <img src="/assets/img/ow-logo.png" alt="Overwatch Logo" class="h-24 w-auto">
-        </div>
-
-        <!-- Rocket League Team -->
-        <div class="bg-[#202020] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center">
-          <img src="/assets/img/rl-logo.png" alt="Rocket League Logo" class="h-28 w-auto">
-        </div>
-
-        <!-- Counter-Strike 2 Team -->
-        <div class="bg-[#202020] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center">
-          <img src="/assets/img/cs2-logo.png" alt="Counter-Strike 2 Logo" class="h-28 w-auto">
-        </div>
-
-        <!-- Valorant Team -->
-        <div class="bg-[#202020] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center">
-          <img src="/assets/img/valorant-logo.png" alt="Valorant Logo" class="h-28 w-auto">
-        </div>
-
-        <!-- Smash Bros Team -->
-        <div class="bg-[#202020] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center">
-          <img src="/assets/img/smash-logo.png" alt="Smash Bros Logo" class="h-28 w-auto">
-        </div>
-
-        <!-- Apex Legends Team -->
-        <div class="bg-[#202020] rounded-lg text-center w-52 h-52 mx-auto flex items-center justify-center">
-          <img src="/assets/img/apex-logo.png" alt="Apex Legends Logo" class="h-28 w-auto">
+        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
+          <div
+            v-for="(coordinator, index) in coordinators"
+            :key="index"
+            class="bg-lighter-base rounded-lg text-center p-6"
+          >
+            <h3 class="text-xl font-bold text-white">{{ coordinator.name }}</h3>
+            <p class="text-gray-400">{{ coordinator.position }}</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- officers -->
+    <section class="bg-lighter-base text-gray-400 py-12">
+      <div class="max-w-7xl mx-auto text-left">
+        <h2 class="text-5xl font-extrabold text-white uppercase mb-8">
+          Officers
+        </h2>
 
-  <!-- Meet Our Coordinators Section -->
-  <section class="bg-gray-1000 py-24">
-    <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-5xl font-extrabold text-white uppercase mb-8">Meet Our Coordinators</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <!-- Coordinator 1 -->
-        <div class="bg-[#1c1c1c] rounded-lg text-center p-6">
-          <!-- <img src="/assets/img/coordinator1.jpg" alt="Coordinator 1" class="h-28 w-auto mx-auto rounded-full mb-4"> -->
-          <h3 class="text-xl font-bold text-white">John Doe</h3>
-          <p class="text-gray-400">Event Coordinator</p>
-        </div>
-
-        <!-- Coordinator 2 -->
-        <div class="bg-[#1c1c1c] rounded-lg text-center p-6">
-          <!-- <img src="/assets/img/coordinator2.jpg" alt="Coordinator 2" class="h-28 w-auto mx-auto rounded-full mb-4"> -->
-          <h3 class="text-xl font-bold text-white">Jane Smith</h3>
-          <p class="text-gray-400">Community Manager</p>
-        </div>
-
-        <!-- Coordinator 3 -->
-        <div class="bg-[#1c1c1c] rounded-lg text-center p-6">
-          <!-- <img src="/assets/img/coordinator3.jpg" alt="Coordinator 3" class="h-28 w-auto mx-auto rounded-full mb-4"> -->
-          <h3 class="text-xl font-bold text-white">Alex Brown</h3>
-          <p class="text-gray-400">Strategy Lead</p>
+        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div
+            v-for="(officer, index) in officers"
+            :key="index"
+            class="bg-[#2c2c2c] rounded-lg text-center p-6"
+          >
+            <img
+              :src="officer.imgSrc"
+              :alt="`Officer ${index + 1}`"
+              class="h-28 w-auto mx-auto rounded-full mb-4"
+            >
+            <h3 class="text-xl font-bold text-white">{{ officer.name }}</h3>
+            <p class="text-gray-400">{{ officer.position }}</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Meet Our Officers Section -->
-  <section class="bg-gray-1000 py-24">
-    <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-5xl font-extrabold text-white uppercase mb-8">Meet Our Officers</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <!-- Officer 1 -->
-        <div class="bg-[#202020] rounded-lg text-center p-6">
-          <img src="/assets/img/officer1.jpg" alt="Officer 1" class="h-28 w-auto mx-auto rounded-full mb-4">
-          <h3 class="text-xl font-bold text-white">Harris "Axe" Ali</h3>
-          <p class="text-gray-400">President</p>
-        </div>
-
-        <!-- Officer 2 -->
-        <div class="bg-[#202020] rounded-lg text-center p-6">
-          <img src="/assets/img/officer2.jpg" alt="Officer 2" class="h-28 w-auto mx-auto rounded-full mb-4">
-          <h3 class="text-xl font-bold text-white">Katherine "katwnotail" Delgado</h3>
-          <p class="text-gray-400">Vice President</p>
-        </div>
-
-        <!-- Officer 3 -->
-        <div class="bg-[#202020] rounded-lg text-center p-6">
-          <img src="/assets/img/officer3.jpg" alt="Officer 3" class="h-28 w-auto mx-auto rounded-full mb-4">
-          <h3 class="text-xl font-bold text-white">Hunter "Apollo" Johnson</h3>
-          <p class="text-gray-400">Treasurer</p>
-        </div>
-
-        <!-- Officer 4 -->
-        <div class="bg-[#202020] rounded-lg text-center p-6">
-          <img src="/assets/img/officer4.jpg" alt="Officer 4" class="h-28 w-auto mx-auto rounded-full mb-4">
-          <h3 class="text-xl font-bold text-white">Bianca "binko" Panes</h3>
-          <p class="text-gray-400">Secretary</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
-<script>
-export default {
-  mounted() {
-    // Load Twitter widget script
-    const script = document.createElement('script');
-    script.src = 'https://platform.twitter.com/widgets.js';
-    script.async = true;
-    script.chars = 'utf-8';
-    document.body.appendChild(script);
+<script setup>
+import { onMounted } from 'vue';
+import prezImg from '@/assets/img/officer1.jpg';
+import vpImg from '@/assets/img/officer2.jpg';
+import treasurerImg from '@/assets/img/officer3.jpg';
+import secretaryImg from '@/assets/img/officer4.jpg';
+import lolLogo from '/assets/img/lol-logo.png';
+import owLogo from '/assets/img/ow-logo.png';
+import rlLogo from '/assets/img/rl-logo-better.png';
+import cs2Logo from '/assets/img/cs2-logo-better.png';
+import valorantLogo from '/assets/img/valorant-logo.png';
+import ssbuLogo from '/assets/img/ssbu-logo-2.png';
+import apexLogo from '/assets/img/apex-logo.png';
+
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+const officers = ref([
+  {
+    name: 'Harris "Axe" Ali',
+    position: 'President',
+    imgSrc: prezImg,
   },
-};
+  {
+    name: 'Katherine "katwnotail" Delgado',
+    position: 'Vice President',
+    imgSrc: vpImg,
+  },
+  {
+    name: 'Hunter "Apollo" Johnson',
+    position: 'Treasurer',
+    imgSrc: treasurerImg,
+  },
+  {
+    name: 'Bianca "binko" Panes',
+    position: 'Secretary',
+    imgSrc: secretaryImg,
+  },
+]);
+
+const coordinators = ref([
+  {
+    name: 'John Doe',
+    position: 'Event Coordinator',
+  },
+  {
+    name: 'Jane Smith',
+    position: 'Community Manager',
+  },
+  {
+    name: 'Alex Brown',
+    position: 'Strategy Lead',
+  },
+]);
+
+const teams = ref([
+  {
+    logo: lolLogo,
+    alt: 'League of Legends Logo',
+  },
+  {
+    logo: owLogo,
+    alt: 'Overwatch Logo',
+  },
+  {
+    logo: rlLogo,
+    alt: 'Rocket League Logo',
+  },
+  {
+    logo: cs2Logo,
+    alt: 'Counter-Strike 2 Logo',
+  },
+  {
+    logo: valorantLogo,
+    alt: 'Valorant Logo',
+  },
+  {
+    logo: ssbuLogo,
+    alt: 'Smash Bros Logo',
+  },
+  {
+    logo: apexLogo,
+    alt: 'Apex Legends Logo',
+  },
+]);
+
+onMounted(() => {
+  // Load Twitter widget script
+  const script = document.createElement('script');
+  script.src = 'https://platform.twitter.com/widgets.js';
+  script.async = true;
+  document.body.appendChild(script);
+});
 </script>
+
+<style scoped>
+/* 
+*/
+</style>

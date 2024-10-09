@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-lighter-base text-white font-sans">
     <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold mb-6">MEDIA WALL</h1>
-      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" >
+      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c]" >
 
       <!-- media tags. currently by years -->
       <div class="relative">
@@ -11,10 +11,11 @@
             <button
               v-for="year in years"
               :key="year"
-              :class="{
-                'bg-primary text-white': selectedYear === year,
-                'bg-gray-700 text-calendar': selectedYear !== year,
-              }"
+              :class="
+                selectedYear === year
+                  ? 'bg-secondary text-white'
+                  : 'bg-[#2c2c2c] text-gray-400'
+              "
               class="py-2 px-4 rounded hover:bg-secondary hover:text-white transition-colors duration-300"
               @click="setYear(year)"
             >
@@ -22,7 +23,7 @@
             </button>
           </div>
           <!-- pagination -->
-          <div class="flex justify-end items-center gap-4 ">
+          <div class="flex justify-end items-center gap-4">
             <div class="items-center flex">
               <button
                 :disabled="currentPage === 1"
