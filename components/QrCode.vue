@@ -21,7 +21,6 @@
   </div>
 </template>
 
-
 <script setup>
 // removed defineEmits, as it is a compiler macro and does not need to be imported
 import { ref, watch } from 'vue';

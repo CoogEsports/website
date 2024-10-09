@@ -1,11 +1,7 @@
 <template>
   <div class="max-h-screen pb-8 bg-lighter-base text-white font-sans">
     <div class="container mx-auto py-8">
-      <h2
-        class="text-3xl font-bold mb-6"
-      >
-    CONTACT US  
-    </h2>
+      <h2 class="text-3xl font-bold mb-6">CONTACT US</h2>
 
       <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c]" >
       <form action="#" class="space-y-8">
