@@ -1,4 +1,5 @@
-<!-- 
+<!-- DisplayCalendar.vue
+
 created: 06/27/2024 author of todo: brandon
 updated: 10/08/2024 (added test qr code tied to every event)
 
@@ -6,7 +7,7 @@ updated: 10/08/2024 (added test qr code tied to every event)
 <!--TODO
   1. figure out qrcode generation display with admin linking qrcode
   2. only display qrcode when admin links correct google form
-  3. 
+  3. allow admin to close qr code 
 -->
 
 <template>
@@ -177,31 +178,39 @@ updated: 10/08/2024 (added test qr code tied to every event)
   <h1 class="text-3xl font-bold text-secondary my-8 mb-10">UPCOMING EVENTS</h1>
 
   <!-- Display future events in a grid layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div v-for="event in futureEvents" :key="event.id" @click="handleEventClick(event)">
-        <div class="bg-current-month h-full text-black border border-gray-300 rounded-md overflow-hidden ">
-          <!-- Content container with padding and spacing -->
-          <div class="p-4">
-            <h2 class="text-lg font-arimo font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap">
-              {{ event.title }} 
-            </h2>
-            <p class="font-bold text-secondary text-md mb-1 cursor-pointer">
-              | QR-Code |
-            </p>
-            <p class="text-sm mb-1">
-              Date: {{ event.datetime.format('dddd, MMMM D, YYYY') }}
-            </p>
-            <p class="text-sm mb-1">
-              Time: {{ event.datetime.format('h:mm A') }}
-            </p>
-            <p class="text-sm">{{ event.description }}</p>
-          </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div
+      v-for="event in futureEvents"
+      :key="event.id"
+      @click="handleEventClick(event)"
+    >
+      <div
+        class="bg-current-month h-full text-black border border-gray-300 rounded-md overflow-hidden"
+      >
+        <!-- Content container with padding and spacing -->
+        <div class="p-4">
+          <h2
+            class="text-lg font-arimo font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap"
+          >
+            {{ event.title }}
+          </h2>
+          <p class="font-bold text-secondary text-md mb-1 cursor-pointer">
+            | QR-Code |
+          </p>
+          <p class="text-sm mb-1">
+            Date: {{ event.datetime.format('dddd, MMMM D, YYYY') }}
+          </p>
+          <p class="text-sm mb-1">
+            Time: {{ event.datetime.format('h:mm A') }}
+          </p>
+          <p class="text-sm">{{ event.description }}</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- QR Code Modal Component -->
-    <QRCode :show="showQrCode" :data="googleFormUrl" @close="closeQrCode" />
+  <!-- qrcode component call -->
+  <QRCode :show="showQrCode" :data="googleFormUrl" @close="closeQrCode" />
 
   <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" >
 
@@ -215,19 +224,17 @@ updated: 10/08/2024 (added test qr code tied to every event)
   </button>
 
   <!-- display past events -->
-    <div
-      v-if="showPastEvents" 
-      class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  <div v-if="showPastEvents" class="grid grid-cols-1 lg:grid-cols-3 gap-4">
     <div v-for="event in pastEvents" :key="event.id">
       <div
         class="bg-prev-next-month h-full text-black border border-gray-300 rounded-md overflow-hidden"
       >
         <!-- content container with padding and spacing -->
-        <div class="p-4 line-through ">
+        <div class="p-4 line-through">
           <h2
             class="text-lg font-arimo font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap"
           >
-            {{ event.title }} QR CODE
+            {{ event.title }}
           </h2>
           <p class="text-sm mb-1">
             Date: {{ event.datetime.format('dddd, MMMM D, YYYY') }}
@@ -240,8 +247,6 @@ updated: 10/08/2024 (added test qr code tied to every event)
       </div>
     </div>
   </div>
-
-  
 </template>
 
 <script setup>
@@ -250,7 +255,8 @@ import dayjs from 'dayjs';
 import QRCode from '~/components/QrCode.vue';
 
 const showQrCode = ref(false);
-const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfMdLMAN-vGrqv828vVxpweRaD4yJm3RWm7Zb55KT8ke_7Ysg/viewform?usp=sf_link";
+const googleFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfMdLMAN-vGrqv828vVxpweRaD4yJm3RWm7Zb55KT8ke_7Ysg/viewform?usp=sf_link';
 
 // Function to handle event click and show QR code
 const handleEventClick = () => {

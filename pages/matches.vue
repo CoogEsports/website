@@ -314,7 +314,6 @@ onMounted(() => {
   updateInitialMatchStatus();
   updateMatchStatus();
   setInterval(updateMatchStatus, 60000);
-
 });
 
 // return all by default. add pagination.
