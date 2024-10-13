@@ -2,13 +2,11 @@
   <div class="min-h-screen bg-lighter-base text-white font-sans">
     <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold mb-6 text-left">TEAMS</h1>
-      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 mb-10">
+      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-[#2c2c2c] mb-10" >
       <div v-for="(game, index) in games" :key="index" class="mb-16">
         <h2 class="text-2xl mb-10 text-white">{{ game.name }}</h2>
         <!-- using flexbox instead of grid -->
-        <div
-          class="flex justify-center gap-4 flex-wrap"
-        >
+        <div class="flex justify-center gap-4 flex-wrap">
           <div
             v-for="(player, playerIndex) in game.players"
             :key="playerIndex"
@@ -38,17 +36,53 @@ import { ref } from 'vue';
 
 // reactive state for games array with mock data for players
 const games = ref([
-  { name: 'VALORANT', players: Array(5).fill({ name: 'Player' }), abbrev: 'val' },
-  { name: 'LEAGUE OF LEGENDS', players: Array(5).fill({ name: 'Player' }), abbrev: 'lol' },
-  { name: 'COUNTER STRIKE 2', players: Array(5).fill({ name: 'Player' }), abbrev: 'cs2' },
-  { name: 'SUPER SMASH BROS ULTIMATE', players: Array(5).fill({ name: 'Player' }), abbrev: 'ssbu' },
-  { name: 'OVERWATCH 2', players: Array(5).fill({ name: 'Player' }), abbrev: 'ow2' },
-  { name: 'ROCKET LEAGUE', players: Array(3).fill({ name: 'Player' }), abbrev: 'rl' },
-  { name: 'FORTNITE', players: Array(5).fill({ name: 'Player' }), abbrev: 'fortnite' },
+  {
+    name: 'VALORANT',
+    players: Array(5).fill({ name: 'Player' }),
+    abbrev: 'val',
+  },
+  {
+    name: 'LEAGUE OF LEGENDS',
+    players: Array(5).fill({ name: 'Player' }),
+    abbrev: 'lol',
+  },
+  {
+    name: 'COUNTER STRIKE 2',
+    players: Array(5).fill({ name: 'Player' }),
+    abbrev: 'cs2',
+  },
+  {
+    name: 'SUPER SMASH BROS ULTIMATE',
+    players: Array(5).fill({ name: 'Player' }),
+    abbrev: 'ssbu',
+  },
+  {
+    name: 'OVERWATCH 2',
+    players: Array(5).fill({ name: 'Player' }),
+    abbrev: 'ow2',
+  },
+  {
+    name: 'ROCKET LEAGUE',
+    players: Array(3).fill({ name: 'Player' }),
+    abbrev: 'rl',
+  },
+  {
+    name: 'FORTNITE',
+    players: Array(5).fill({ name: 'Player' }),
+    abbrev: 'fortnite',
+  },
   { name: 'FGC', players: Array(5).fill({ name: 'Player' }), abbrev: 'fgc' },
-  { name: 'POKEMON', players: Array(5).fill({ name: 'Player' }), abbrev: 'pokemon' },
+  {
+    name: 'POKEMON',
+    players: Array(5).fill({ name: 'Player' }),
+    abbrev: 'pokemon',
+  },
   { name: 'TCG', players: Array(5).fill({ name: 'Player' }), abbrev: 'tcg' },
-  { name: 'APEX LEGENDS', players: Array(3).fill({ name: 'Player' }), abbrev: 'apex' },
+  {
+    name: 'APEX LEGENDS',
+    players: Array(3).fill({ name: 'Player' }),
+    abbrev: 'apex',
+  },
 ]);
 
 //too lazy to change the rows
