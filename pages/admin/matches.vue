@@ -1,8 +1,8 @@
 <template>
   <div class="flex h-screen">
     <!-- Admin Panel Sidebar -->
-    <aside class="w-64 bg-gray-1000 text-red-600 p-4">
-      <h1 class="text-2xl font-bold mb-10">Coog Esports</h1>
+    <aside class="w-64 bg-base text-red-600 p-4">
+      <h1 class="text-2xl font-sans mb-10">Coog Esports</h1>
       <ul class="mt-8">
         <li class="mb-4"><NuxtLink to="/admin" class="block py-2 text-red-500">Dashboard</NuxtLink></li>
         <li class="mb-4"><NuxtLink to="/admin/settings" class="block py-2 text-red-500">Member List</NuxtLink></li>
@@ -15,14 +15,14 @@
     </aside>
 
     <!-- Divider -->
-    <div class="w-1 bg-blue-500"></div>
+    <div class="w-1 bg-primary"></div>
 
     <!-- Main Content Area -->
-    <main class="flex-1 bg-gray-1000 p-4">
-      <div class="p-4 bg-gray-1000 text-white min-h-screen">
+    <main class="flex-1 bg-base p-4">
+      <div class="p-4 bg-base text-white min-h-screen">
         <!-- Create New Match Form -->
-        <div class="bg-gray-1000 p-6 rounded-lg shadow-md mb-6">
-          <h2 class="text-xl font-semibold mb-4">Create New Match</h2>
+        <div class="bg-base p-6 rounded-lg shadow-md mb-6">
+          <h2 class="text-xl font-arimo mb-4">Create New Match</h2>
           <form @submit.prevent="createMatch" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div class="col-span-1">
@@ -74,19 +74,19 @@
                 />
               </div>
             </div>
-            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 mt-4">Create Match</button>
+            <button type="submit" class="bg-secondary text-white px-4 py-2 rounded hover:bg-primary mt-4">Create Match</button>
           </form>
         </div>
 
         <!-- Upcoming Matches Table -->
         <div class="bg-gray-1000 p-6 rounded-lg shadow-md">
           <div class="mb-4">
-            <button @click="deleteSelectedMatches" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete Selected</button>
+            <button @click="deleteSelectedMatches" class="bg-secondary text-white px-4 py-2 rounded hover:bg-primary">Delete Selected</button>
           </div>
           <table class="min-w-full bg-gray-1000">
             <thead>
               <tr class="bg-gray-1000 text-gray-1000">
-                <th class="py-2 px-4 border-b border-gray-600">
+                <th class="py-2 px-4 border-b border-lightest-base">
                   <input
                     type="checkbox"
                     v-model="selectAll"
@@ -94,16 +94,16 @@
                     class="form-checkbox h-5 w-5 text-gray-1000"
                   />
                 </th>
-                <th class="py-2 px-4 border-b border-gray-600">Team 1</th>
-                <th class="py-2 px-4 border-b border-gray-600">Team 2</th>
-                <th class="py-2 px-4 border-b border-gray-600">Date</th>
-                <th class="py-2 px-4 border-b border-gray-600">Time</th>
-                <th class="py-2 px-4 border-b border-gray-600">Match Type</th>
-                <th class="py-2 px-4 border-b border-gray-600">Actions</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Team 1</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Team 2</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Date</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Time</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Match Type</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="match in matches" :key="match.id" class="bg-gray-1000 border-b-2 border-gray-600">
+              <tr v-for="match in matches" :key="match.id" class="bg-gray-1000 border-b-2 border-lightest-base">
                 <td class="py-2 px-4 text-center">
                   <input
                     type="checkbox"
@@ -118,7 +118,7 @@
                 <td class="py-2 px-4 text-center">{{ match.matchType }}</td>
                 <td class="py-2 px-4 text-center">
                   <button @click="editMatch(match.id)" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Edit</button>
-                  <button @click="confirmDelete(match.id)" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 ml-2">Delete</button>
+                  <button @click="confirmDelete(match.id)" class="bg-secondary text-white px-3 py-1 rounded hover:bg-primary ml-2">Delete</button>
                 </td>
               </tr>
             </tbody>

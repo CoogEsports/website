@@ -1,27 +1,27 @@
 <template>
   <div class="flex h-screen">
     <!-- Admin Panel Sidebar -->
-    <aside class="w-64 bg-gray-1000 text-red-600 p-4">
-      <h1 class="text-2xl font-bold mb-10">Coog Esports</h1>
+    <aside class="w-64 bg-base text-secondary p-4">
+      <h1 class="text-2xl font-sans mb-10">Coog Esports</h1>
       <ul class="mt-8">
-        <li class="mb-4"><NuxtLink to="/admin" class="block py-2 text-red-500">Dashboard</NuxtLink></li>
-        <li class="mb-4"><NuxtLink to="/admin/settings" class="block py-2 text-red-500">Member List</NuxtLink></li>
-        <li class="mb-4"><NuxtLink to="/admin/event" class="block py-2 text-red-500">Events</NuxtLink></li>
-        <li class="mb-4"><NuxtLink to="/admin/matches" class="block py-2 text-red-500">Matches</NuxtLink></li>
-        <li class="mb-4"><NuxtLink to="/admin/media" class="block py-2 text-red-500">Media</NuxtLink></li>
-        <li class="mb-4"><NuxtLink to="/admin/payment" class="block py-2 text-red-500">Payment</NuxtLink></li>
-        <li><NuxtLink to="/admin/settings" class="block py-2 text-red-500">Settings</NuxtLink></li>
+        <li class="mb-4"><NuxtLink to="/admin" class="block py-2 text-secondary">Dashboard</NuxtLink></li>
+        <li class="mb-4"><NuxtLink to="/admin/settings" class="block py-2 text-secondary">Member List</NuxtLink></li>
+        <li class="mb-4"><NuxtLink to="/admin/event" class="block py-2 text-secondary">Events</NuxtLink></li>
+        <li class="mb-4"><NuxtLink to="/admin/matches" class="block py-2 text-secondary">Matches</NuxtLink></li>
+        <li class="mb-4"><NuxtLink to="/admin/media" class="block py-2 text-secondary">Media</NuxtLink></li>
+        <li class="mb-4"><NuxtLink to="/admin/payment" class="block py-2 text-secondary">Payment</NuxtLink></li>
+        <li><NuxtLink to="/admin/settings" class="block py-2 text-secondary">Settings</NuxtLink></li>
       </ul>
     </aside>
 
     <!-- Divider -->
-    <div class="w-1 bg-blue-500"></div>
+    <div class="w-1 bg-primary"></div>
 
     <!-- Main Content Area -->
-    <main class="flex-1 bg-gray-1000 p-4">
-      <div class="p-4 bg-gray-1000 text-white min-h-screen">
+    <main class="flex-1 bg-base p-4">
+      <div class="p-4 bg-base text-white min-h-screen">
         <!-- Create New Event Form -->
-        <div class="bg-gray-1000 p-6 rounded-lg shadow-md mb-6">
+        <div class="bg-base p-6 rounded-lg shadow-md mb-6">
           <h2 class="text-xl font-arimo mb-4">Create New Event</h2>
           <form @submit.prevent="addEvent" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -32,7 +32,7 @@
                   id="eventId"
                   v-model="newEvent.id"
                   placeholder="Enter Event ID"
-                  class="mt-1 block w-full p-2 h-12 border border-gray-1000 bg-gray-1000 rounded text-black"
+                  class="mt-1 block w-full p-2 h-12 border border-gray-1000 bg-base0 rounded text-black"
                 />
               </div>
               <div>
@@ -65,19 +65,19 @@
                 />
               </div>
             </div>
-            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4">Add Event</button>
+            <button type="submit" class="bg-secondary text-white px-4 py-2 rounded hover:bg-primary mt-4">Add Event</button>
           </form>
         </div>
     
         <!-- Upcoming Events Table -->
         <div class="bg-gray-1000 p-6 rounded-lg shadow-md">
           <div class="mb-4">
-            <button @click="confirmDeleteSelected" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete Selected</button>
+            <button @click="confirmDeleteSelected" class="bg-secondary text-white px-4 py-2 rounded hover:bg-red-700">Delete Selected</button>
           </div>
-          <table class="min-w-full bg-gray-1000 ">
+          <table class="min-w-full bg-base ">
             <thead>
-              <tr class="bg-gray-1000 text-gray-1000">
-                <th class="py-2 px-4 border-b border-gray-600">
+              <tr class="bg-base text-gray-1000">
+                <th class="py-2 px-4 border-b border-lightest-base">
                   <input
                     type="checkbox"
                     v-model="selectAll"
@@ -85,15 +85,15 @@
                     class="form-checkbox h-5 w-5 text-gray-1000"
                   />
                 </th>
-                <th class="py-2 px-4 border-b border-gray-600">Event ID</th>
-                <th class="py-2 px-4 border-b border-gray-600">Event Name</th>
-                <th class="py-2 px-4 border-b border-gray-600">Date</th>
-                <th class="py-2 px-4 border-b border-gray-600">Location</th>
-                <th class="py-2 px-4 border-b border-gray-600">Actions</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Event ID</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Event Name</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Date</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Location</th>
+                <th class="py-2 px-4 border-b border-lightest-base">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="event in events" :key="event.id" class="bg-gray-1000 border-b-2 border-gray-600">
+              <tr v-for="event in events" :key="event.id" class="bg-base border-b-2 border-lightest-base">
                 <td class="py-2 px-4 text-center">
                   <input
                     type="checkbox"
@@ -106,7 +106,7 @@
                 <td class="py-2 px-4 text-center">{{ event.date }}</td>
                 <td class="py-2 px-4 text-center">{{ event.location }}</td>
                 <td class="py-2 px-4 text-center">
-                  <button @click="confirmDeleteEvent(event.id)" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Delete</button>
+                  <button @click="confirmDeleteEvent(event.id)" class="bg-secondary text-white px-3 py-1 rounded hover:bg-red-700">Delete</button>
                 </td>
               </tr>
             </tbody>
