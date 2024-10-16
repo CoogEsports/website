@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen">
     <!-- Admin Panel Sidebar -->
-    <aside class="w-64 bg-gray-1000 text-red-600 p-4">
+    <aside class="w-64 bg-base text-red-600 p-4">
       <h1 class="text-2xl font-bold mb-10">Coog Esports</h1>
       <ul class="mt-8">
         <li class="mb-4"><NuxtLink to="/admin" class="block py-2 text-red-500">Dashboard</NuxtLink></li>
@@ -15,19 +15,19 @@
     </aside>
 
     <!-- Divider -->
-    <div class="w-1 bg-blue-500"></div>
+    <div class="w-1 bg-primary"></div>
 
     <!-- Main Content Area -->
-    <main class="flex-1 bg-gray-1000 p-4">
-      <div class="p-4 bg-gray-1000 text-white min-h-screen">
+    <main class="flex-1 bg-base p-4">
+      <div class="p-4 bg-base text-white min-h-screen">
         <!-- Header with Home Button -->
         <div class="flex justify-between items-center mb-4">
           <h1 class="text-2xl font-bold">Media</h1>
-          <NuxtLink to="/admins" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800">Home</NuxtLink>
+          <NuxtLink to="/admins" class="bg-secondary text-white px-4 py-2 rounded hover:bg-primary">Home</NuxtLink>
         </div>
 
         <!-- Upload Media Form -->
-        <div class="bg-gray-800 p-6 rounded shadow-md mb-6">
+        <div class="bg-lighter-base p-6 rounded shadow-md mb-6">
           <h2 class="text-xl font-semibold mb-4">Upload Media</h2>
           <form @submit.prevent="uploadMedia" class="space-y-4">
             <!-- File Upload -->
@@ -37,7 +37,7 @@
                 type="file"
                 id="fileUpload"
                 @change="handleFileUpload"
-                class="mt-1 block w-full p-2 border border-gray-600 bg-gray-700 rounded text-white"
+                class="mt-1 block w-full p-2 border border-lightest-base bg-gray-700 rounded text-white"
               />
             </div>
             <!-- URL Import -->
@@ -48,15 +48,15 @@
                 id="urlImport"
                 v-model="imageUrl"
                 placeholder="Enter image URL"
-                class="mt-1 block w-full p-2 border border-gray-600 bg-gray-700 rounded text-white"
+                class="mt-1 block w-full p-2 border border-lightest-base bg-gray-700 rounded text-white"
               />
             </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Media</button>
+            <button type="submit" class="bg-secondary text-white px-4 py-2 rounded hover:bg-primary">Add Media</button>
           </form>
         </div>
 
         <!-- Media Gallery -->
-        <div class="bg-gray-800 p-6 rounded shadow-md">
+        <div class="bg-lighter-base p-6 rounded shadow-md">
           <h2 class="text-xl font-semibold mb-4">Media Gallery</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             <div v-for="media in mediaItems" :key="media.id" class="relative group flex items-center justify-center bg-gray-700 rounded overflow-hidden">
