@@ -22,6 +22,7 @@ export default {
         'prev-next-month': '#e3e1e2',
         'calendar': '#cecccd',
         'current-month': '#f8f8f8', 
+        'lightest-base': '#4B5563'
       },
       // need to cycle thru if multiple per game. TODO. FIXME.
       backgroundImage: {

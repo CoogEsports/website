@@ -3,28 +3,28 @@
       <!-- User Management Section -->
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-4">User Management</h2>
-        <table class="w-full bg-gray-800 border border-gray-600 rounded-lg shadow">
+        <table class="w-full bg-base border border-lighter-base rounded-lg shadow">
           <thead>
             <tr>
-              <th class="p-2 border-b border-gray-600">Username</th>
-              <th class="p-2 border-b border-gray-600">Role</th>
-              <th class="p-2 border-b border-gray-600">Actions</th>
+              <th class="p-2 border-b border-lightest-base">Username</th>
+              <th class="p-2 border-b border-lightest-base">Role</th>
+              <th class="p-2 border-b border-lightest-base">Actions</th>
             </tr>
           </thead>
           <tbody>
             <!-- Replace with dynamic user data -->
             <tr v-for="user in users" :key="user.id">
-              <td class="p-2 border-b border-gray-600">{{ user.username }}</td>
-              <td class="p-2 border-b border-gray-600">
-                <select v-model="user.selectedRole" class="bg-gray-700 text-white border border-gray-600 rounded">
+              <td class="p-2 border-b border-lightest-base">{{ user.username }}</td>
+              <td class="p-2 border-b border-lightest-base">
+                <select v-model="user.selectedRole" class="bg-lighter-base text-white border border-lightest-base rounded">
                   <option value="admin">Admin</option>
                   <option value="coordinator">Coordinator</option>
                   <option value="member">Member</option>
                 </select>
               </td>
-              <td class="p-2 border-b border-gray-600">
+              <td class="p-2 border-b border-lightest-base">
                 <button @click="changeRole(user.id)" class="bg-blue-500 text-white px-2 py-1 rounded">Change Role</button>
-                <button @click="deactivateUser(user.id)" class="bg-red-500 text-white px-2 py-1 rounded ml-2">Deactivate</button>
+                <button @click="deactivateUser(user.id)" class="bg-secondary text-white px-2 py-1 rounded ml-2">Deactivate</button>
               </td>
             </tr>
             <!-- End of dynamic user data -->
@@ -38,11 +38,11 @@
         <form class="space-y-4">
           <div>
             <label for="site-name" class="block mb-2">Site Name</label>
-            <input id="site-name" type="text" v-model="siteName" class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded"/>
+            <input id="site-name" type="text" v-model="siteName" class="w-full p-2 bg-lighter-base text-white border border-lightest-base rounded"/>
           </div>
           <div>
             <label for="theme" class="block mb-2">Theme</label>
-            <select id="theme" v-model="siteTheme" class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded">
+            <select id="theme" v-model="siteTheme" class="w-full p-2 bg-lighter-base text-white border border-lightest-base rounded">
               <option value="light">Light</option>
               <option value="dark">Dark</option>
             </select>
